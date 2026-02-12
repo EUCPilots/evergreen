@@ -121,7 +121,7 @@ export default defineConfig({
 
     footer: {
       message: 'A stealthpuppy project.',
-      copyright: 'Copyright &copy; 2025 Aaron Parker. <a target="_blank" href="https://icons8.com/icon/tI2IB1EJFmdP/greentech">Greentech</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>'
+      copyright: 'Copyright &copy; 2026 Aaron Parker. <a target="_blank" href="https://icons8.com/icon/tI2IB1EJFmdP/greentech">Greentech</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>'
     },
 
     editLink: {

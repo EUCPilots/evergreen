@@ -28,6 +28,7 @@ export default defineConfig({
           { text: 'Rimo3', link: 'https://stealthpuppy.com/rimo3-evergreen/' }
         ]
       },
+      { text: 'EvergreenUI', link: '/evergreenui' },
       { text: 'PowerShell Gallery', link: 'https://www.powershellgallery.com/packages/Evergreen/' },
       { text: 'Change log', link: '/changelog' }
     ],
@@ -83,6 +84,15 @@ export default defineConfig({
         ]
       },
       {
+        text: 'EvergreenUI (Beta)',
+        collapsed: false,
+        items: [
+          { text: 'About EvergreenUI', link: '/evergreenui' },
+          { text: 'Installing EvergreenUI', link: '/evergreenui-install' },
+          { text: 'Using EvergreenUI', link: '/evergreenui-usage' }
+        ]
+      },
+      {
         text: 'Resources',
         collapsed: false,
         items: [
@@ -108,6 +118,8 @@ export default defineConfig({
           { text: 'Export-EvergreenManifest', link: '/help/en-US/Export-EvergreenManifest' },
           { text: 'Get-EvergreenAppFromApi', link: '/help/en-US/Get-EvergreenAppFromApi' },
           { text: 'Get-EvergreenEndpointFromApi', link: '/help/en-US/Get-EvergreenEndpointFromApi' },
+          { text: 'Get-EvergreenAppsPath', link: '/help/en-US/Get-EvergreenAppsPath' },
+          { text: 'Update-Evergreen', link: '/help/en-US/Update-Evergreen' },
           { text: 'ConvertTo-DotNetVersionClass', link: '/help/en-US/ConvertTo-DotNetVersionClass' }
         ]
       }

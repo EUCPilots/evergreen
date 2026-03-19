@@ -17,7 +17,7 @@ The Desktop Workbench (EvergreenUI) is currently in pre-release. Install with th
 | Evergreen module | 2603.2832.0 or later |
 
 ::: info
-The Desktop Workbench is Windows-only because it is built on WPF. No additional DLLs are required — the UI uses WPF assemblies that ship with Windows.
+The Desktop Workbench is Windows-only because it is built on WPF. No additional DLLs are required - the UI uses WPF assemblies that ship with Windows.
 :::
 
 ## Install from the PowerShell Gallery

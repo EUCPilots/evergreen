@@ -3,24 +3,24 @@ layout: doc
 ---
 # About the Evergreen Workbench
 
-The Evergreen Workbench is a graphical interface for exploring application version data from the [Evergreen](/about) PowerShell module. It is available in two editions — a **Desktop Workbench** for Windows, and a **Web Workbench** that runs in any modern browser.
+The Evergreen Workbench is a graphical interface for exploring application version data from the [Evergreen](/about) PowerShell module. It is available in two editions - a **Desktop Workbench** for Windows, and a **Web Workbench** that runs in any modern browser.
 
 ## Desktop vs Web
 
 | | Desktop Workbench | Web Workbench |
 |---|---|---|
 | **Platform** | Windows (WPF) | Any modern browser |
-| **Install** | PowerShell module ([EvergreenUI](https://www.powershellgallery.com/packages/EvergreenUI/)) | No install — hosted at [eucpilots.com/workbench](https://eucpilots.com/workbench) |
+| **Install** | PowerShell module ([EvergreenUI](https://www.powershellgallery.com/packages/EvergreenUI/)) | No install - hosted at [eucpilots.com/workbench](https://eucpilots.com/workbench) |
 | **Browse apps** | Yes | Yes |
 | **Search and filter** | Yes | Yes |
-| **Dashboard** | — | Yes |
-| **Download installers** | Yes | — |
-| **Library management** | Yes | — |
-| **Install / update apps** | In development | — |
-| **Import to Intune / Nerdio** | In development | — |
+| **Dashboard** | - | Yes |
+| **Download installers** | Yes | - |
+| **Library management** | Yes | - |
+| **Install / update apps** | In development | - |
+| **Import to Intune / Nerdio** | In development | - |
 | **Export to CSV** | Yes | Yes |
-| **RSS feeds** | — | Yes (per app) |
-| **PWA install** | — | Yes |
+| **RSS feeds** | - | Yes (per app) |
+| **PWA install** | - | Yes |
 | **Theme** | Light / Dark | Light / Dark |
 
 ## Desktop Workbench
@@ -37,7 +37,7 @@ Key capabilities:
 
 - **Browse and filter** all Evergreen-supported applications with dynamic filter panels
 - **Download** application installers via a queued download manager
-- **Manage libraries** — create, browse, and update Evergreen libraries on disk
+- **Manage libraries** - create, browse, and update Evergreen libraries on disk
 - **Install and update** applications directly from package definitions *(in development)*
 - **Import** application packages into Microsoft Intune (Win32 apps) or Nerdio Manager (Shell Apps) *(in development)*
 - **Settings** for download paths, themes, log verbosity, and provider configuration
@@ -46,7 +46,7 @@ See [Installing the Desktop Workbench](/workbench-install) and [Using the Deskto
 
 ## Web Workbench
 
-The Web Workbench is a browser-based application at [eucpilots.com/workbench](https://eucpilots.com/workbench). It provides a read-only view of all Evergreen-tracked applications — no PowerShell or Windows required.
+The Web Workbench is a browser-based application at [eucpilots.com/workbench](https://eucpilots.com/workbench). It provides a read-only view of all Evergreen-tracked applications - no PowerShell or Windows required.
 
 ![The Web Workbench Dashboard](/img/webui/webworkbench-dashboard.jpeg)
 
@@ -65,5 +65,5 @@ See [Using the Web Workbench](/workbench-web) for full details.
 
 Both editions are open source and available on GitHub:
 
-- **Desktop Workbench:** [EUCPilots/evergreen-ui](https://github.com/EUCPilots/evergreen-ui) — MIT licence
-- **Web Workbench:** [EUCPilots/workbench](https://github.com/EUCPilots/workbench) — MIT licence
+- **Desktop Workbench:** [EUCPilots/evergreen-ui](https://github.com/EUCPilots/evergreen-ui) - MIT licence
+- **Web Workbench:** [EUCPilots/workbench](https://github.com/EUCPilots/workbench) - MIT licence

@@ -57,10 +57,10 @@ To download application installers, select versions in the Apps view and click *
 
 The Download view shows the queue with Status, App, Version, Architecture, and URI columns. Use the toolbar to:
 
-- **Remove selected** — remove items from the queue
-- **Clear queue** — remove all items
-- **Open folder** — open the download output folder
-- **Download all** — start downloading all queued items sequentially
+- **Remove selected** - remove items from the queue
+- **Clear queue** - remove all items
+- **Open folder** - open the download output folder
+- **Download all** - start downloading all queued items sequentially
 
 A progress bar at the bottom tracks the current download. Downloads are processed sequentially and in queue order.
 
@@ -72,16 +72,16 @@ If you have an existing [Evergreen library](/newlibrary), the Library view provi
 
 The Library view displays:
 
-- **Library contents** — a table of applications in the library with app name, version count, and path
-- **Selected app details** — version, URI, type, size, SHA256 hash, release, and file path for each version of the selected application
+- **Library contents** - a table of applications in the library with app name, version count, and path
+- **Selected app details** - version, URI, type, size, SHA256 hash, release, and file path for each version of the selected application
 
 Use the toolbar to:
 
-- **Browse** — select a library path
-- **Open folder** — open the library directory
-- **New library** — create a new Evergreen library (`New-EvergreenLibrary`)
-- **Refresh library** — reload the library contents (`Get-EvergreenLibrary`)
-- **Update library** — download the latest versions into the library (`Start-EvergreenLibraryUpdate`)
+- **Browse** - select a library path
+- **Open folder** - open the library directory
+- **New library** - create a new Evergreen library (`New-EvergreenLibrary`)
+- **Refresh library** - reload the library contents (`Get-EvergreenLibrary`)
+- **Update library** - download the latest versions into the library (`Start-EvergreenLibraryUpdate`)
 
 ## Install view
 
@@ -95,19 +95,19 @@ The Install view loads package definitions from a directory, compares the define
 
 Each row shows:
 
-- **App** — the application name and architecture
-- **Publisher** — the application publisher
-- **Installed** — the version currently installed on the machine (if any)
-- **Latest** — the latest version available from Evergreen
-- **Status** — whether the app is installed (up to date), installed (update needed), installed (latest not checked), or not installed
-- **Action** — the available action: Install, Update, or none
+- **App** - the application name and architecture
+- **Publisher** - the application publisher
+- **Installed** - the version currently installed on the machine (if any)
+- **Latest** - the latest version available from Evergreen
+- **Status** - whether the app is installed (up to date), installed (update needed), installed (latest not checked), or not installed
+- **Action** - the available action: Install, Update, or none
 
 Use the toolbar to:
 
-- **Browse** — select the directory containing package definitions
-- **Load definitions** — load or reload the package definition files
-- **Find latest versions** — query Evergreen for the latest version of each defined application
-- **Install selected** — install or update the selected applications
+- **Browse** - select the directory containing package definitions
+- **Load definitions** - load or reload the package definition files
+- **Find latest versions** - query Evergreen for the latest version of each defined application
+- **Install selected** - install or update the selected applications
 
 ::: info
 If the Workbench is not running elevated, installers may prompt for UAC elevation.
@@ -139,7 +139,7 @@ Browse to a directory containing Nerdio Manager Shell App definitions, load them
 
 ![The Import tab showing Nerdio Manager Shell Apps with version comparison](/img/ui/evergreen-workbench-import-nerdio.png)
 
-The data grid shows the status of each definition — whether it is matched to an existing Shell App, whether an update is available, and the current versus latest Evergreen version. The status bar summarises the comparison results. Use the toolbar to add new versions to existing Shell Apps or import new ones.
+The data grid shows the status of each definition - whether it is matched to an existing Shell App, whether an update is available, and the current versus latest Evergreen version. The status bar summarises the comparison results. Use the toolbar to add new versions to existing Shell Apps or import new ones.
 
 ### Authentication
 
@@ -149,9 +149,9 @@ The Authentication sub-tab manages connections to Entra ID, the Nerdio Manager A
 
 Configure the following:
 
-- **Entra ID** — sign in with your tenant ID to connect to Microsoft Intune
-- **Nerdio Manager API** — provide the NME Host, Client ID, API Scope, OAuth token URL, Client Secret, and Tenant ID to connect to Nerdio Manager
-- **Azure Storage** — optionally configure a Subscription, Resource Group, Storage Account, and Container for storing application packages
+- **Entra ID** - sign in with your tenant ID to connect to Microsoft Intune
+- **Nerdio Manager API** - provide the NME Host, Client ID, API Scope, OAuth token URL, Client Secret, and Tenant ID to connect to Nerdio Manager
+- **Azure Storage** - optionally configure a Subscription, Resource Group, Storage Account, and Container for storing application packages
 
 ## Update view
 
@@ -169,30 +169,30 @@ The Settings view configures general preferences and provider-specific options.
 
 ### General
 
-- **Download output path** — default directory for downloaded application installers
-- **Evergreen apps path** — path to the local Evergreen application definitions cache (read-only, shows the value from `Get-EvergreenAppsPath`)
-- **Log verbosity** — set the log output level (Normal or Verbose)
-- **Theme** — switch between Light and Dark themes
-- **Show Import tab** / **Show Install tab** — toggle visibility of the Import and Install views
-- **Startup view** — choose which view opens when the Workbench launches (Apps, Download, Library, etc.)
-- **App version cache** — cached version data is stored locally and loaded when you select an app; use **Clear cache** to force a fresh query on next selection
+- **Download output path** - default directory for downloaded application installers
+- **Evergreen apps path** - path to the local Evergreen application definitions cache (read-only, shows the value from `Get-EvergreenAppsPath`)
+- **Log verbosity** - set the log output level (Normal or Verbose)
+- **Theme** - switch between Light and Dark themes
+- **Show Import tab** / **Show Install tab** - toggle visibility of the Import and Install views
+- **Startup view** - choose which view opens when the Workbench launches (Apps, Download, Library, etc.)
+- **App version cache** - cached version data is stored locally and loaded when you select an app; use **Clear cache** to force a fresh query on next selection
 
 ### Nerdio Manager
 
-- **NerdioShellApps.psm1 path** — path to the Nerdio Shell Apps module file; use **Browse** to locate it and **Reload** to re-import
+- **NerdioShellApps.psm1 path** - path to the Nerdio Shell Apps module file; use **Browse** to locate it and **Reload** to re-import
 
 ### Microsoft Intune
 
-- **IntuneWin32App module** — status indicator showing whether the IntuneWin32App module is loaded; use **Reload** to re-import
-- **Package output path** — directory for Intune Win32 package output files
+- **IntuneWin32App module** - status indicator showing whether the IntuneWin32App module is loaded; use **Reload** to re-import
+- **Package output path** - directory for Intune Win32 package output files
 
 ## Log panel
 
 The log panel at the bottom of the window displays timestamped messages at three levels:
 
-- **Info** — progress updates and status messages
-- **Warning** — non-critical issues (e.g., a download URL returned a redirect)
-- **Error** — failures during version lookups, downloads, or library updates
+- **Info** - progress updates and status messages
+- **Warning** - non-critical issues (e.g., a download URL returned a redirect)
+- **Error** - failures during version lookups, downloads, or library updates
 
 ![The progress log panel showing detailed operation output](/img/ui/evergreen-workbench-progresslog.png)
 

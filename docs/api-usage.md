@@ -1,7 +1,7 @@
 ---
 layout: doc
 ---
-# Evergreen API — Usage Guide
+# Evergreen API - Usage Guide
 
 This page explains how to call the Evergreen API (OpenAPI 3.0, version 1.5.2). It summarises the base URL(s), authentication, common endpoints, example requests (curl, PowerShell, and Node), common responses, and tips for use.
 
@@ -20,10 +20,10 @@ All endpoints in this documentation are relative to the base URL.
 
 ## Useful endpoints (summary)
 
-- GET /apps — List all supported applications
-- GET /app/{appId} — Get details for the named application (replace `{appId}` with the application identifier)
-- GET /endpoints/versions — Returns hostnames used by Evergreen when returning version numbers and downloads
-- GET /endpoints/downloads — Returns hostnames used by Evergreen when downloading application installers
+- GET /apps - List all supported applications
+- GET /app/{appId} - Get details for the named application (replace `{appId}` with the application identifier)
+- GET /endpoints/versions - Returns hostnames used by Evergreen when returning version numbers and downloads
+- GET /endpoints/downloads - Returns hostnames used by Evergreen when downloading application installers
 
 These are the most commonly used endpoints. See the [interactive API documentation](/api-docs.html) for full details.
 
@@ -88,7 +88,7 @@ print(data)
 
 ### Example: Get application details (GET /app/{appId})
 
-Request (curl) — replace `MicrosoftEdge` with the Name value from `/apps`:
+Request (curl) - replace `MicrosoftEdge` with the Name value from `/apps`:
 
 ```bash
 curl -sS -H "User-Agent: company/location" "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge"

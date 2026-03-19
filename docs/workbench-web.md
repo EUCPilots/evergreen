@@ -3,7 +3,7 @@ layout: doc
 ---
 # Using the Web Workbench
 
-The Evergreen Web Workbench is a browser-based application for exploring application version data tracked by the [Evergreen](/about) module. It requires no installation — open it at:
+The Evergreen Web Workbench is a browser-based application for exploring application version data tracked by the [Evergreen](/about) module. It requires no installation - open it at:
 
 **[eucpilots.com/workbench](https://eucpilots.com/workbench)**
 
@@ -33,8 +33,8 @@ The top row displays key metrics:
 
 Two horizontal bar charts visualise the distribution of version entries:
 
-- **Architecture** — breakdown by CPU architecture (x64, x86, ARM64, aarch64, etc.)
-- **File type** — breakdown by installer format (exe, msi, msix, zip, cab, etc.)
+- **Architecture** - breakdown by CPU architecture (x64, x86, ARM64, aarch64, etc.)
+- **File type** - breakdown by installer format (exe, msi, msix, zip, cab, etc.)
 
 ### URI lookup
 
@@ -52,10 +52,10 @@ The Apps view lists all Evergreen-supported applications in a sidebar on the lef
 
 The sidebar displays:
 
-- **Application count** — showing the total and any active filter count
-- **Search box** — type to filter the application list by name
-- **Star icon** — applications with recent updates are highlighted
-- **Recent filter** — filter the sidebar to show only applications updated in the last 24h, 48h, 72h, or 1 week
+- **Application count** - showing the total and any active filter count
+- **Search box** - type to filter the application list by name
+- **Star icon** - applications with recent updates are highlighted
+- **Recent filter** - filter the sidebar to show only applications updated in the last 24h, 48h, 72h, or 1 week
 
 The version detail table shows columns for:
 
@@ -77,13 +77,13 @@ At the top of the detail pane, checkbox filters let you narrow results by archit
 
 The toolbar above the version table provides:
 
-- **Get-EvergreenApp command** — a copy button with the PowerShell command to retrieve the same data (e.g., `Get-EvergreenApp -Name AdobeAcrobatReaderDC`)
-- **RSS** — link to the RSS feed for the selected application
-- **Updated date** — shows when the application data was last refreshed
-- **Clear search** — clear the sidebar search text
-- **Clear filters** — reset all column and architecture/type filters
-- **Columns** — show or hide table columns
-- **Export to CSV** — download the current filtered view as a CSV file
+- **Get-EvergreenApp command** - a copy button with the PowerShell command to retrieve the same data (e.g., `Get-EvergreenApp -Name AdobeAcrobatReaderDC`)
+- **RSS** - link to the RSS feed for the selected application
+- **Updated date** - shows when the application data was last refreshed
+- **Clear search** - clear the sidebar search text
+- **Clear filters** - reset all column and architecture/type filters
+- **Columns** - show or hide table columns
+- **Export to CSV** - download the current filtered view as a CSV file
 
 ## Filtering
 
@@ -129,5 +129,5 @@ Each application has an RSS feed available via the **RSS** link in the toolbar. 
 
 Press **?** to view available keyboard shortcuts. Key shortcuts include:
 
-- **Ctrl+K** — open global search
-- **?** — show keyboard shortcuts
+- **Ctrl+K** - open global search
+- **?** - show keyboard shortcuts

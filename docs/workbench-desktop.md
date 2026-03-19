@@ -85,6 +85,10 @@ Use the toolbar to:
 
 ## Install view
 
+::: warning In development
+The Install feature is in development and may not function as expected. Package definition details will be documented at a later date.
+:::
+
 The Install view loads package definitions from a directory, compares the defined application versions against what is currently installed on the machine, and allows you to install or update applications directly.
 
 ![The Install view comparing installed and latest application versions](/img/ui/evergreen-workbench-install.png)
@@ -115,6 +119,10 @@ The Import tab provides workflows for importing application packages into extern
 
 ### Microsoft Intune Win32 Apps
 
+::: warning In development
+The Intune import feature is in development and is not yet functional.
+:::
+
 Browse to a directory containing Intune package definitions, load them, and compare against the Win32 apps currently in your Intune tenant.
 
 ![The Import tab showing Microsoft Intune Win32 Apps with package definitions and import status](/img/ui/evergreen-workbench-import-intune.png)
@@ -122,6 +130,10 @@ Browse to a directory containing Intune package definitions, load them, and comp
 The data grid shows each package definition with its publisher, Intune version (if already imported), definition version, match status, update requirements, and available action (Import as new app or update existing). Use **Import as new Win32 app** to push selected packages to Intune.
 
 ### Nerdio Manager Shell Apps
+
+::: warning In development
+The Nerdio Manager Shell Apps import works but has not been validated in production environments.
+:::
 
 Browse to a directory containing Nerdio Manager Shell App definitions, load them, and compare against the Shell Apps in your Nerdio Manager environment.
 

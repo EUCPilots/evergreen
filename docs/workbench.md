@@ -16,8 +16,8 @@ The Evergreen Workbench is a graphical interface for exploring application versi
 | **Dashboard** | — | Yes |
 | **Download installers** | Yes | — |
 | **Library management** | Yes | — |
-| **Install / update apps** | Yes | — |
-| **Import to Intune / Nerdio** | Yes | — |
+| **Install / update apps** | In development | — |
+| **Import to Intune / Nerdio** | In development | — |
 | **Export to CSV** | Yes | Yes |
 | **RSS feeds** | — | Yes (per app) |
 | **PWA install** | — | Yes |
@@ -38,8 +38,8 @@ Key capabilities:
 - **Browse and filter** all Evergreen-supported applications with dynamic filter panels
 - **Download** application installers via a queued download manager
 - **Manage libraries** — create, browse, and update Evergreen libraries on disk
-- **Install and update** applications directly from package definitions
-- **Import** application packages into Microsoft Intune (Win32 apps) or Nerdio Manager (Shell Apps)
+- **Install and update** applications directly from package definitions *(in development)*
+- **Import** application packages into Microsoft Intune (Win32 apps) or Nerdio Manager (Shell Apps) *(in development)*
 - **Settings** for download paths, themes, log verbosity, and provider configuration
 
 See [Installing the Desktop Workbench](/workbench-install) and [Using the Desktop Workbench](/workbench-desktop) for full details.

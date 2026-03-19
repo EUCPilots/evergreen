@@ -1,10 +1,10 @@
 ---
 layout: doc
 ---
-# Installing EvergreenUI
+# Installing the Desktop Workbench
 
 ::: warning Beta
-EvergreenUI is currently in pre-release. Install with the `-AllowPrerelease` flag. Features and commands may change before the stable release.
+The Desktop Workbench (EvergreenUI) is currently in pre-release. Install with the `-AllowPrerelease` flag. Features and commands may change before the stable release.
 :::
 
 ## Requirements
@@ -17,7 +17,7 @@ EvergreenUI is currently in pre-release. Install with the `-AllowPrerelease` fla
 | Evergreen module | 2603.2832.0 or later |
 
 ::: info
-EvergreenUI is Windows-only because it is built on WPF. No additional DLLs are required — the UI uses WPF assemblies that ship with Windows.
+The Desktop Workbench is Windows-only because it is built on WPF. No additional DLLs are required — the UI uses WPF assemblies that ship with Windows.
 :::
 
 ## Install from the PowerShell Gallery
@@ -42,7 +42,7 @@ Update-Module -Name EvergreenUI -AllowPrerelease -Force
 
 ## Install from source
 
-To run EvergreenUI from a cloned copy of the repository:
+To run the Desktop Workbench from a cloned copy of the repository:
 
 ```powershell
 # Install the Evergreen dependency first

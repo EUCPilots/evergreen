@@ -1,13 +1,13 @@
 ---
 layout: doc
 ---
-# Using EvergreenUI
+# Using the Desktop Workbench
 
 ::: warning Beta
-EvergreenUI is currently in pre-release. Features and commands may change before the stable release.
+The Desktop Workbench (EvergreenUI) is currently in pre-release. Features and commands may change before the stable release.
 :::
 
-## Launching the UI
+## Launching the Workbench
 
 Import the module and run `Start-EvergreenUI` to open the Evergreen Workbench window:
 

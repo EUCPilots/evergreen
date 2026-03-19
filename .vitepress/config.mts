@@ -20,6 +20,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'About', link: '/about' },
       { text: 'Getting started', link: '/install' },
+      { text: 'Workbench', link: '/workbench' },
       { text: 'Solutions',
         items: [
           { text: 'App Tracker', link: 'https://stealthpuppy.com/apptracker/' },
@@ -28,7 +29,6 @@ export default defineConfig({
           { text: 'Rimo3', link: 'https://stealthpuppy.com/rimo3-evergreen/' }
         ]
       },
-      { text: 'EvergreenUI', link: '/evergreenui' },
       { text: 'PowerShell Gallery', link: 'https://www.powershellgallery.com/packages/Evergreen/' },
       { text: 'Change log', link: '/changelog' }
     ],
@@ -84,12 +84,13 @@ export default defineConfig({
         ]
       },
       {
-        text: 'EvergreenUI (Beta)',
+        text: 'Workbench',
         collapsed: false,
         items: [
-          { text: 'About EvergreenUI', link: '/evergreenui' },
-          { text: 'Installing EvergreenUI', link: '/evergreenui-install' },
-          { text: 'Using EvergreenUI', link: '/evergreenui-usage' }
+          { text: 'About the Workbench', link: '/workbench' },
+          { text: 'Using the Web Workbench', link: '/workbench-web' },
+          { text: 'Installing the Desktop Workbench', link: '/workbench-install' },
+          { text: 'Using the Desktop Workbench', link: '/workbench-desktop' }
         ]
       },
       {

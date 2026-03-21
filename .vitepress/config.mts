@@ -28,9 +28,7 @@ export default defineConfig({
           { text: 'Nerdio Manager Shell Apps', link: 'https://stealthpuppy.com/nerdio-shell-apps-p1/' },
           { text: 'Rimo3', link: 'https://stealthpuppy.com/rimo3-evergreen/' }
         ]
-      },
-      { text: 'PowerShell Gallery', link: 'https://www.powershellgallery.com/packages/Evergreen/' },
-      { text: 'Change log', link: '/changelog' }
+      }
     ],
 
     logo: '/img/evergreenbulb.png',
@@ -99,7 +97,9 @@ export default defineConfig({
         items: [
           { text: 'Under the hood', link: '/under' },
           { text: 'Troubleshooting', link: '/troubleshoot' },
-          { text: 'Known issues', link: '/issues' }
+          { text: 'Known issues', link: '/issues' },
+          { text: 'Change log', link: '/changelog' },
+          { text: 'PowerShell Gallery', link: 'https://www.powershellgallery.com/packages/Evergreen/' }
         ]
       },
       {

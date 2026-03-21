@@ -9,16 +9,12 @@ The Desktop Workbench (EvergreenUI) is currently in pre-release. Features and co
 
 ## Launching the Workbench
 
-Import the module and run `Start-EvergreenUI` to open the Evergreen Workbench window:
+Import the module and run `Start-EvergreenWorkbench` to open the Evergreen Workbench window:
 
 ```powershell
 Import-Module EvergreenUI
-Start-EvergreenUI
+Start-EvergreenWorkbench
 ```
-
-::: tip
-`Start-EvergreenWorkbench` is available as an alias for `Start-EvergreenUI`.
-:::
 
 The UI opens to the Apps view by default. You can change the startup view and other preferences in [Settings](#settings).
 

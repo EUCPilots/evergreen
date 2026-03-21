@@ -26,6 +26,8 @@ The output from this function can be passed to Where-Object to filter for a spec
 
 `Get-EvergreenApp` uses official vendor sources including update APIs, web queries, and code repository locations to return details of a target application at run time.
 
+Over 150 applications supported by Evergreen are hosted on GitHub. For these applications, `Get-EvergreenApp` queries the GitHub REST API, which is subject to a rate limit of 60 unauthenticated requests per hour. Set the `GITHUB_TOKEN` or `GH_TOKEN` environment variable to a personal access token to authenticate requests and raise the limit to 5,000 requests per hour.
+
 ## EXAMPLES
 
 ### EXAMPLE 1
@@ -250,6 +252,10 @@ Site: https://eucpilots.com/evergreen-docs
 
 Author: Aaron Parker
 
+For applications that use GitHub as a source, `Get-EvergreenApp` queries the GitHub REST API. Set the `GITHUB_TOKEN` or `GH_TOKEN` environment variable to a personal access token to authenticate these requests and avoid rate limiting. See [Working with GitHub rate limits](https://eucpilots.com/evergreen-docs/github/) for details.
+
 ## RELATED LINKS
 
 [Use Evergreen](https://eucpilots.com/evergreen-docs/use/)
+
+[Working with GitHub rate limits](https://eucpilots.com/evergreen-docs/github/)

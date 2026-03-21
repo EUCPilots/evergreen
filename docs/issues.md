@@ -21,9 +21,9 @@ Supports Windows platforms only - this function wraps `Resolve-DnsName` which is
 
 ### Get-GitHubRepoRelease
 
-`Get-GitHubRepoRelease` queries release information from a specified GitHub repository to return version and binaries or is used to source the version number for some applications. This function uses an unauthenticated session to the GitHub REST API, thus requests will be [rate limited]. Using the `-Verbose` parameter with `Get-EvergreenApp` for those applications that use GitHub as the source, will display the number of available requests to the API.
+`Get-GitHubRepoRelease` queries release information from a specified GitHub repository to return version and binaries or is used to source the version number for some applications. By default, requests to the GitHub REST API are unauthenticated and subject to a rate limit of 60 requests per hour. Using the `-Verbose` parameter with `Get-EvergreenApp` for those applications that use GitHub as the source will display the number of available API requests remaining.
 
-Updating `Get-GitHubRepoRelease` to support authenticated requests is planned for a future release.
+Authenticated requests are supported via the `GITHUB_TOKEN` or `GH_TOKEN` environment variables, which raise the rate limit to 5,000 requests per hour. See [Working with GitHub rate limits](/github) for setup instructions.
 
 ## Application Functions
 

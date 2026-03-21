@@ -19,7 +19,9 @@ Update-Evergreen [-Force] [<CommonParameters>]
 
 ## DESCRIPTION
 
-Enables separation of the core Evergreen module from app-specific code and manifests. Downloads the latest versions of /Apps and /Manifests from a specified GitHub repository to a user-writable location (no admin required). By default, the local cache is downloaded to %LocalAppData%\Evergreen on Windows, and ~/.evergreen on macOS and Linux.
+Enables separation of the core Evergreen module from app-specific code and manifests. Downloads the latest versions of /Apps and /Manifests from the [eucpilots/evergreen-apps](https://github.com/eucpilots/evergreen-apps) GitHub repository to a user-writable location (no admin required). By default, the local cache is downloaded to %LocalAppData%\Evergreen on Windows, and ~/.evergreen on macOS and Linux.
+
+`Update-Evergreen` queries the GitHub REST API to check for and download updates. In environments where it is run frequently, GitHub's unauthenticated API rate limit of 60 requests per hour may be reached. Set the `GITHUB_TOKEN` or `GH_TOKEN` environment variable to a personal access token to authenticate requests and raise the limit to 5,000 requests per hour.
 
 ## EXAMPLES
 
@@ -75,4 +77,8 @@ Site: https://eucpilots.com/evergreen-docs
 
 Author: Aaron Parker
 
+`Update-Evergreen` uses the GitHub REST API to check for and download updates from the eucpilots/evergreen-apps repository. Set the `GITHUB_TOKEN` or `GH_TOKEN` environment variable to a personal access token to authenticate these requests. See [Working with GitHub rate limits](https://eucpilots.com/evergreen-docs/github/) for details.
+
 ## RELATED LINKS
+
+[Working with GitHub rate limits](https://eucpilots.com/evergreen-docs/github/)

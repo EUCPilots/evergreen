@@ -126,7 +126,7 @@ Import-related modules are loaded when you first open the Import Tab. Until requ
 ### Microsoft Intune Win32 Apps
 
 ::: warning In development
-The Intune import feature is in development and is not yet functional.
+The Intune import feature import works but has not been validated in production environments.
 :::
 
 Browse to a directory containing Intune package definitions, load them, and compare against the Win32 apps currently in your Intune tenant.
@@ -161,7 +161,7 @@ Use **Compare with Nerdio Manager** to build the reconciliation list. Then use *
 ### Microsoft 365 Apps
 
 ::: warning In development
-The Microsoft 365 Apps import feature is in development and should be validated in your environment before production use.
+The Microsoft 365 Apps import feature is in development and should be validated in your environment before production use. Import into Intune works, but import into Nerdio Manager is not yet working.
 :::
 
 Browse to a folder containing Office Deployment Tool XML configuration files and click **Load configurations**.
@@ -183,6 +183,14 @@ Use the action bar to configure packaging and import:
 - **Import Microsoft Intune Win32 App** - builds and imports the package to Intune
 
 Connection indicators on this tab show both Microsoft Intune and Nerdio Manager authentication status.
+
+### Package definitions
+
+Package definitions for Install and Import functionality can be found here: [https://github.com/EUCPilots/evergreen-packages](https://github.com/EUCPilots/evergreen-packages).
+
+::: info
+These package definitions should be validated before use. The long term intention is to create a single unified package definition for Intune Win32 apps and Nerdio Manager Shell Apps.
+:::
 
 ### Authentication
 

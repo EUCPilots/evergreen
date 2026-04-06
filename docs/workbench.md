@@ -60,10 +60,3 @@ Key capabilities:
 - **Install as a PWA** for a standalone app experience on any platform
 
 See [Using the Web Workbench](/workbench-web) for full details.
-
-## Source code
-
-Both editions are open source and available on GitHub:
-
-- **Desktop Workbench:** [EUCPilots/evergreen-ui](https://github.com/EUCPilots/evergreen-ui) - MIT licence
-- **Web Workbench:** [EUCPilots/workbench](https://github.com/EUCPilots/workbench) - MIT licence

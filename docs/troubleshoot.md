@@ -39,7 +39,7 @@ Get-EvergreenApp -Name "MicrosoftWvdMultimediaRedirection"
 
 WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF.
 WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 Write-Error: /Users/aaron/projects/evergreen/Evergreen/Apps/Get-MicrosoftWvdMultimediaRedirection.ps1:25
 Line |
   25 |      $Content = Invoke-EvergreenWebRequest @params
@@ -72,7 +72,7 @@ VERBOSE: HEAD with 0-byte payload
 VERBOSE: received 175-byte response of content type text/html
 WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF.
 WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 Write-Error: /Users/aaron/projects/evergreen/Evergreen/Apps/Get-MicrosoftWvdMultimediaRedirection.ps1:25
 Line |
   25 |      $Content = Invoke-EvergreenWebRequest @params
@@ -116,8 +116,8 @@ VERBOSE: Resolve-SystemNetWebRequest: Resolved to: [https://cdn.zoom.us/prod/5.7
 VERBOSE: Resolve-SystemNetWebRequest: Attempting to resolve: https://zoom.us/client/latest/ZoomRooms.exe.
 WARNING: Resolve-SystemNetWebRequest: Error at URI: https://zoom.us/client/latest/ZoomRooms.exe.
 WARNING: Resolve-SystemNetWebRequest: Response:  -
-WARNING: Resolve-SystemNetWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
-VERBOSE: Get-Zoom: Setting fallback URL to: https://eucpilots.com/evergreen-docs/issues/.
+WARNING: Resolve-SystemNetWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
+VERBOSE: Get-Zoom: Setting fallback URL to: https://eucpilots.com/evergreen/issues/.
 VERBOSE: Resolve-SystemNetWebRequest: Attempting to resolve: https://zoom.us/client/latest/ZoomLyncPluginSetup.msi.
 VERBOSE: Resolve-SystemNetWebRequest: Response: [OK].
 VERBOSE: Resolve-SystemNetWebRequest: Resolved to: [https://cdn.zoom.us/prod/5.2.44882.0827/ZoomLyncPluginSetup.msi].
@@ -143,19 +143,19 @@ Get-EvergreenApp -Name "MicrosoftWvdRemoteDesktop"
 
 WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
 WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
 WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
 WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
 WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
 WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
 WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
 WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
 ```
 

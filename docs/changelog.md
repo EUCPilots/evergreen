@@ -900,7 +900,7 @@ IMPORTANT UPDATES
 
 * Changes `FoxitReader` to return MSI installers instead of EXEs. Removes Elex, Portuguese (Portugal), and Turkish language support from this application because the installers returned are out of date.
 * Adds the following languages to `AdobeAcrobatReaderDC`: Swedish, Basque, Catalan, Croatian, Czech, Hungarian, Polish, Romanian, Russian, Slovakian, Slovenian, Turkish, Ukrainian
-* Adds a known issues list to the documentation: [https://eucpilots.com/evergreen-docs/knownissues.html](https://eucpilots.com/evergreen-docs/knownissues.html)
+* Adds a known issues list to the documentation: [https://eucpilots.com/evergreen/knownissues.html](https://eucpilots.com/evergreen/knownissues.html)
 
 ## 2104.348
 
@@ -914,7 +914,7 @@ IMPORTANT UPDATES
 
 ## 2104.337
 
-* <Badge type="danger" text="Breaking change" /> This version removes the `Get-` function for each application and introduces `Get-EvergreenApp`. See the docs site on how to use the new functions [https://eucpilots.com/evergreen-docs/](https://eucpilots.com/evergreen-docs/)
+* <Badge type="danger" text="Breaking change" /> This version removes the `Get-` function for each application and introduces `Get-EvergreenApp`. See the docs site on how to use the new functions [https://eucpilots.com/evergreen/](https://eucpilots.com/evergreen/)
 * Adds `Get-EvergreenApp`, `Find-EvergreenApp` and `Save-EvergreenApp`
 * Adds file type to SourceForge applications
 * Re-instates `ControlUpAgent` and `ControlUpConsole`
@@ -965,7 +965,7 @@ IMPORTANT UPDATES
 * Updates `Get-MicrosoftWvdRemoteDesktop` to output the `URI` property value in the format `https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4MntQ` instead of the original `fwlink` source URL (e.g. `https://go.microsoft.com/fwlink/?linkid=2068602`)
 * Updates the following functions to use `Invoke-RestMethod` (via `Invoke-RestMethodWrapper`) instead of `Invoke-WebRequest` to simplify code and fix an issue where some functions where returning `Version` as a PSObject instead of System.String ([#109](https://github.com/eucpilots/evergreen-module/issues/109))
   * `Get-AtlassianBitbucket`, `Get-Cyberduck`, `Get-FileZilla`, `Get-Fork`, `Get-RingCentral`, `Get-ScooterBeyondCompare`, `Get-SumatraPDFReader`, `Get-VideoLanVlcPlayer`
-* Updates module `ReleaseNotes` location to: [https://eucpilots.com/evergreen-docs/changelog.html](https://eucpilots.com/evergreen-docs/changelog.html)
+* Updates module `ReleaseNotes` location to: [https://eucpilots.com/evergreen/changelog.html](https://eucpilots.com/evergreen/changelog.html)
 
 ## 2101.281
 

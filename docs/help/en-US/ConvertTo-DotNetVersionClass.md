@@ -80,4 +80,4 @@ Author: Aaron Parker
 
 ## RELATED LINKS
 
-[Export application version information](https://eucpilots.com/evergreen-docs/convertversion/)
+[Export application version information](https://eucpilots.com/evergreen/convertversion/)

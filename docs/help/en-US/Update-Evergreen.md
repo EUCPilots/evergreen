@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://eucpilots.com/evergreen-docs/help/en-US/Update-Evergreen/
+online version: https://eucpilots.com/evergreen/help/en-US/Update-Evergreen/
 schema: 2.0.0
 ---
 
@@ -77,8 +77,8 @@ Site: https://eucpilots.com/evergreen-docs
 
 Author: Aaron Parker
 
-`Update-Evergreen` uses the GitHub REST API to check for and download updates from the eucpilots/evergreen-apps repository. Set the `GITHUB_TOKEN` or `GH_TOKEN` environment variable to a personal access token to authenticate these requests. See [Working with GitHub rate limits](https://eucpilots.com/evergreen-docs/github/) for details.
+`Update-Evergreen` uses the GitHub REST API to check for and download updates from the eucpilots/evergreen-apps repository. Set the `GITHUB_TOKEN` or `GH_TOKEN` environment variable to a personal access token to authenticate these requests. See [Working with GitHub rate limits](https://eucpilots.com/evergreen/github/) for details.
 
 ## RELATED LINKS
 
-[Working with GitHub rate limits](https://eucpilots.com/evergreen-docs/github/)
+[Working with GitHub rate limits](https://eucpilots.com/evergreen/github/)

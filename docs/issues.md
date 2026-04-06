@@ -5,7 +5,7 @@ layout: doc
 
 ## General
 
-Where an application source is unavailable the value of the `URI` property returned may be `https://eucpilots.com/evergreen-docs/issues/`. If you encounter this scenario, follow [the troubleshooting steps](https://eucpilots.com/evergreen-docs/troubleshooting/).
+Where an application source is unavailable the value of the `URI` property returned may be `https://eucpilots.com/evergreen/issues/`. If you encounter this scenario, follow [the troubleshooting steps](https://eucpilots.com/evergreen/troubleshooting/).
 
 ## Public Functions
 
@@ -76,7 +76,7 @@ Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may fail with the fol
 ```powershell
 WARNING: Invoke-EvergreenRestMethod: Error at URI: https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml.
 WARNING: Invoke-EvergreenRestMethod: Error encountered: Response status code does not indicate success: 404 (Not Found)..
-WARNING: Invoke-EvergreenRestMethod: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenRestMethod: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 ```
 
 This typically occurs right after the release of a new version of the Workspace app and may return this result for some time. Right after a new release of the Workspace app, Citrix often makes the update XML file unavailable so that clients do not update immediately. You may have to wait until Citrix makes the URL available again for this function to work.
@@ -126,11 +126,11 @@ The version number returned by the Microsoft Teams update API may be slightly di
 ```powershell
 WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50Mp8.
 WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50Mp8.
 WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50t3P.
 WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50t3P.
 ```
 
@@ -163,7 +163,7 @@ Also see [Get-EvergreenApp OBSStudio not working due to a 404 errors](https://gi
 ```powershell
 WARNING: Invoke-EvergreenWebRequest: Error at URI: https://www.getpaint.net/updates/versions.8.1000.0.x64.en.txt.
 WARNING: Invoke-EvergreenWebRequest: Error encountered: The SSL connection could not be established, see inner exception..
-WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen-docs/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://eucpilots.com/evergreen/troubleshoot/.
 Write-Error: /home/aaron/.local/share/powershell/Modules/Evergreen/2205.561/Apps/Get-PaintDotNet.ps1:20
 Line |
   20 |      $Content = Invoke-EvergreenWebRequest -Uri $res.Get.Uri

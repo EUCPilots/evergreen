@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://eucpilots.com/evergreen-docs/help/en-US/Get-EvergreenAppFromApi/
+online version: https://eucpilots.com/evergreen/help/en-US/Get-EvergreenAppFromApi/
 schema: 2.0.0
 ---
 
@@ -89,4 +89,4 @@ Author: Aaron Parker
 
 ## RELATED LINKS
 
-[https://eucpilots.com/evergreen-docs/invoke/](https://eucpilots.com/evergreen-docs/invoke/)
+[https://eucpilots.com/evergreen/invoke/](https://eucpilots.com/evergreen/invoke/)

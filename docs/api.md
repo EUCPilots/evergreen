@@ -83,6 +83,6 @@ PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/Unsup
 Invoke-RestMethod:                                                                                                      
 {
   "message": "Application not found. Call /apps for a list of available applications.",
-  "documentation": "https://eucpilots.com/evergreen-docs/api/"
+  "documentation": "https://eucpilots.com/evergreen/api/"
 }
 ```

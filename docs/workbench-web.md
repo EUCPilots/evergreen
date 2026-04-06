@@ -3,7 +3,7 @@ layout: doc
 ---
 # Using the Web Workbench
 
-The Evergreen Web Workbench is a browser-based application for exploring application version data tracked by the [Evergreen](/about) module. It requires no installation - open it at:
+The Evergreen Web Workbench is a browser-based application for exploring application version data tracked by the [Evergreen](/about) module. It is available on any platform - open it at:
 
 **[eucpilots.com/workbench](https://eucpilots.com/workbench)**
 

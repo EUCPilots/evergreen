@@ -23,7 +23,6 @@ export default defineConfig({
       { text: 'Workbench', link: '/workbench' },
       { text: 'Solutions',
         items: [
-          { text: 'App Tracker', link: 'https://stealthpuppy.com/apptracker/' },
           { text: 'PSPackagefactory', link: 'https://stealthpuppy.com/packagefactory/' },
           { text: 'Nerdio Manager Shell Apps', link: 'https://stealthpuppy.com/nerdio-shell-apps-p1/' },
           { text: 'Rimo3', link: 'https://stealthpuppy.com/rimo3-evergreen/' }

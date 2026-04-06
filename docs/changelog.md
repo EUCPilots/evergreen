@@ -5,6 +5,20 @@ layout: doc
 
 This is the change log for the Evergreen module. To view the changes for the Evergreen application functions, review the releases page at [eucpilots/evergreen-apps](https://github.com/EUCPilots/evergreen-apps/releases).
 
+## 2604.2835.0
+
+* `Get-GitHubRepoRelease` - Add logic to remove the Sha256 property when the asset has no digest. This prevents emitting an empty Sha256 field for Windows assets and ensures the output object only contains the digest when present
+* `Get-InstallerType ` - Add more output strings to provide more values to `InstallerType` property. Address [#124](https://github.com/EUCPilots/evergreen-apps/issues/124)
+* Normalise "anycpu" to "any", and "aarch64" to "ARM64" in `Get-Architecture`
+
+## 2603.2832.0
+
+* Update `Shared/Get-AzulZulu.ps1` - Refine the selection to exclude gzipped downloads when filtering latest releases.
+
+## 2603.2829.0
+
+* Update `Shared/Get-AzulZulu.ps1` - Refactor image type detection by extracting URL-matching logic into a dedicated variable. Add explicit handling for fx-jre -> JREFX and fx-jdk -> JDKFX, retain jre -> JRE and jdk -> JDK, and default to Unknown when no pattern matches. This expands supported image type distinctions. [https://github.com/EUCPilots/evergreen-apps/issues/87](https://github.com/EUCPilots/evergreen-apps/issues/87)
+
 ## 2511.2826.0
 
 * Fix `JRE` or `JDK` string match in `Get-AzulZulu`

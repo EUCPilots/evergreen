@@ -72,15 +72,6 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Evergreen API',
-        collapsed: false,
-        items: [
-          { text: 'How to use the Evergreen API', link: '/api' },
-          { text: 'List endpoints used by Evergreen', link: '/endpoints' },
-          { text: 'API usage', link: '/api-usage' },
-        ]
-      },
-      {
         text: 'Workbench',
         collapsed: false,
         items: [
@@ -88,6 +79,15 @@ export default defineConfig({
           { text: 'Using the Web Workbench', link: '/workbench-web' },
           { text: 'Installing the Desktop Workbench', link: '/workbench-install' },
           { text: 'Using the Desktop Workbench', link: '/workbench-desktop' }
+        ]
+      },
+      {
+        text: 'Evergreen API',
+        collapsed: false,
+        items: [
+          { text: 'How to use the Evergreen API', link: '/api' },
+          { text: 'List endpoints used by Evergreen', link: '/endpoints' },
+          { text: 'API usage', link: '/api-usage' },
         ]
       },
       {

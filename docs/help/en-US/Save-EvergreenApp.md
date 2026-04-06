@@ -252,7 +252,7 @@ Provides a list of paths of the downloaded target files.
 
 ## NOTES
 
-Site: https://eucpilots.com/evergreen-docs
+Site: https://eucpilots.com/evergreen
 
 Author: Aaron Parker
 

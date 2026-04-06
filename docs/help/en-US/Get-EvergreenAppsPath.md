@@ -83,7 +83,7 @@ Returns the resolved file system path to the Evergreen application definitions d
 
 ## NOTES
 
-Site: https://eucpilots.com/evergreen-docs
+Site: https://eucpilots.com/evergreen
 
 Author: Aaron Parker
 

@@ -121,7 +121,7 @@ New-EvergreenLibrary accepts string parameters.
 
 ## NOTES
 
-Site: https://eucpilots.com/evergreen-docs
+Site: https://eucpilots.com/evergreen
 Author: Aaron Parker
 ## RELATED LINKS
 

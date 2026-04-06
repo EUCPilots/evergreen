@@ -114,7 +114,7 @@ Export-EvergreenApp accepts the output from Get-EvergreenApp.
 
 ## NOTES
 
-Site: https://eucpilots.com/evergreen-docs
+Site: https://eucpilots.com/evergreen
 
 Author: Aaron Parker
 

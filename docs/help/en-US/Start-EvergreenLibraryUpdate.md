@@ -135,7 +135,7 @@ Start-EvergreenLibraryUpdate accepts a string parameter.
 
 ## NOTES
 
-Site: https://eucpilots.com/evergreen-docs
+Site: https://eucpilots.com/evergreen
 
 Author: Aaron Parker
 

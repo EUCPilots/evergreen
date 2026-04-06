@@ -5,11 +5,11 @@ export default defineConfig({
   srcDir: './docs',
   title: "Evergreen",
   description: "Enterprise automation for Windows applications and image management.",
-  head: [['link', { rel: 'icon', href: '/evergreen-docs/favicon.ico' }]],
+  head: [['link', { rel: 'icon', href: '/evergreen/favicon.ico' }]],
   lastUpdated: true,
-  base: '/evergreen-docs/',
+  base: '/evergreen/',
   sitemap: {
-    hostname: 'https://eucpilots.github.io/evergreen-docs/'
+    hostname: 'https://eucpilots.github.io/evergreen/'
   },
   cleanUrls: true,
   // ignoreDeadLinks: true,
@@ -137,7 +137,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/EUCPilots/evergreen-docs/edit/main/:path'
+      pattern: 'https://github.com/EUCPilots/evergreen/edit/main/:path'
     }
   }
 })

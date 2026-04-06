@@ -192,7 +192,7 @@ Provides a list URLs and a true/false result.
 
 ## NOTES
 
-Site: https://eucpilots.com/evergreen-docs
+Site: https://eucpilots.com/evergreen
 
 Author: Aaron Parker
 

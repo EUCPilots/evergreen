@@ -7,6 +7,10 @@ layout: doc
 The Desktop Workbench (EvergreenUI) is currently in pre-release. Install with the `-AllowPrerelease` flag. Features and commands may change before the stable release.
 :::
 
+::: info
+This page reflects EvergreenUI features and functions starting with version **1.0.20**.
+:::
+
 ## Requirements
 
 | Requirement | Minimum version |

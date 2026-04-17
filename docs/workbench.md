@@ -5,6 +5,10 @@ layout: doc
 
 The Evergreen Workbench is a graphical interface for exploring application version data from the [Evergreen](/about) PowerShell module. It is available in two editions - a **Desktop Workbench** for Windows, and a **Web Workbench** that runs in any modern browser.
 
+::: info
+This page reflects EvergreenUI features and functions starting with version **1.0.20**.
+:::
+
 ## Desktop vs Web
 
 | | Desktop Workbench | Web Workbench |
@@ -16,8 +20,8 @@ The Evergreen Workbench is a graphical interface for exploring application versi
 | **Dashboard** | - | Yes |
 | **Download installers** | Yes | - |
 | **Library management** | Yes | - |
-| **Install / update apps** | In development | - |
-| **Import to Intune / Nerdio** | In development | - |
+| **Install / update apps** | Yes (pre-release) | - |
+| **Import to Intune / Nerdio / Microsoft 365 Apps** | Yes (pre-release) | - |
 | **Export to CSV** | Yes | Yes |
 | **RSS feeds** | - | Yes (per app) |
 | **PWA install** | - | Yes |
@@ -38,8 +42,8 @@ Key capabilities:
 - **Browse and filter** all Evergreen-supported applications with dynamic filter panels
 - **Download** application installers via a queued download manager
 - **Manage libraries** - create, browse, and update Evergreen libraries on disk
-- **Install and update** applications directly from package definitions *(in development)*
-- **Import** application packages into Microsoft Intune (Win32 apps) or Nerdio Manager (Shell Apps) *(in development)*
+- **Install and update** applications directly from package definitions *(pre-release workflow)*
+- **Import** application packages into Microsoft Intune (Win32 apps), Nerdio Manager (Shell Apps), and Microsoft 365 Apps workflows *(pre-release workflows)*
 - **Settings** for download paths, themes, log verbosity, and provider configuration
 
 See [Installing the Desktop Workbench](/workbench-install) and [Using the Desktop Workbench](/workbench-desktop) for full details.

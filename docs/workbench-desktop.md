@@ -7,6 +7,10 @@ layout: doc
 The Desktop Workbench (EvergreenUI) is currently in pre-release. Features and commands may change before the stable release.
 :::
 
+::: info
+This page reflects EvergreenUI features and functions starting with version **1.0.20**.
+:::
+
 ## Launching the Workbench
 
 Import the module and run `Start-EvergreenWorkbench` to open the Evergreen Workbench window:
@@ -18,6 +22,10 @@ Start-EvergreenWorkbench
 
 The Workbench restores the last view you used when you reopen it. If the saved view is disabled, it falls back to the Apps View.
 
+Use the navigation rail toggle to switch between expanded and compact navigation.
+
+![The Apps View showing Microsoft applications with channel, release, architecture, and Type filters](/img/ui/evergreen-workbench-collapsed.png)
+
 ## Apps View
 
 The Apps View displays all 500+ applications supported by the Evergreen module in a searchable data grid. Select an application from the list on the left to view version and download metadata returned by `Get-EvergreenApp`.
@@ -27,6 +35,10 @@ The Apps View displays all 500+ applications supported by the Evergreen module i
 Use the search box at the top of the application list to filter by name. The data grid on the right shows version details including Version, Date, Channel, Release, Architecture, Type, and URI.
 
 You can star frequently used applications from the left list. Favourites are pinned to the top of the list and saved in your local Workbench settings.
+
+The app detail header also shows a **Last refresh** timestamp when cached data exists for the selected app. Below is the Apps View showing favourited applications pinned at the top with star indicators and App Detail header showing Last refresh timestamp.
+
+![The Apps View showing Microsoft applications with channel, release, architecture, and Type filters](/img/ui/evergreen-workbench-collapsed.png)
 
 ### Dynamic Filters
 
@@ -51,6 +63,8 @@ The versions grid supports column sorting. Click a column header to sort ascendi
 
 You can also right-click a column header to show or hide optional columns. Structural columns such as Version and URI remain visible.
 
+![The Apps View showing the table header right click options](/img/ui/evergreen-workbench-rightclick.png)
+
 ## Download View
 
 To download application installers, select versions in the Apps View and click **Add to download queue**. Switch to the Download View to manage and start downloads.
@@ -64,9 +78,9 @@ The Download View shows the queue with Status, App, Version, Architecture, URI, 
 - **Open folder** - open the download output folder
 - **Download all** - start downloading all queued items sequentially
 
-A progress bar at the bottom tracks the current download. Downloads are processed sequentially and in queue order.
+A progress bar at the bottom tracks the current download. Downloads are processed sequentially and in queue order. The download queue grid supports column sorting.
 
-The download queue grid supports column sorting.
+![The Download View showing the local paths for downloaded files](/img/ui/evergreen-workbench-download-path.png)
 
 ## Library View
 
@@ -88,10 +102,6 @@ Use the toolbar to:
 - **Update Library** - download the latest versions into the library (`Start-EvergreenLibraryUpdate`)
 
 ## Install View
-
-::: warning In development
-The Install feature is in development and may not function as expected. Package definition details will be documented at a later date.
-:::
 
 The Install View loads package definitions from a directory, compares the defined application versions against what is currently installed on the machine, and allows you to install or update applications directly.
 
@@ -125,8 +135,8 @@ Import-related modules are loaded when you first open the Import Tab. Until requ
 
 ### Microsoft Intune Win32 Apps
 
-::: warning In development
-The Intune import feature import works but has not been validated in production environments.
+::: warning Validation recommended
+Import workflows are available, but tenant-specific packaging and assignment behavior should be validated in your environment before production rollout.
 :::
 
 Browse to a directory containing Intune package definitions, load them, and compare against the Win32 apps currently in your Intune tenant.
@@ -146,8 +156,8 @@ Use **Compare with Microsoft Intune** to build the reconciliation list, then use
 
 ### Nerdio Manager Shell Apps
 
-::: warning In development
-The Nerdio Manager Shell Apps import works but has not been validated in production environments.
+::: warning Validation recommended
+Nerdio import workflows are available, but you should validate API permissions, definition mappings, and post-import behavior in your environment.
 :::
 
 Browse to a directory containing Nerdio Manager Shell App definitions, load them, and compare against the Shell Apps in your Nerdio Manager environment.
@@ -156,12 +166,12 @@ Browse to a directory containing Nerdio Manager Shell App definitions, load them
 
 The data grid shows the status of each definition - whether it is matched to an existing Shell App, whether an update is available, and the current versus latest Evergreen version. The status bar summarises the comparison results.
 
-Use **Compare with Nerdio Manager** to build the reconciliation list. Then use **Add new version to existing Shell App** or **Import Shell App** for the selected row.
+Use **Compare with Nerdio Manager** to build the reconciliation list. Then use **Add new version to existing Shell App** or **Import New App** for the selected row.
 
 ### Microsoft 365 Apps
 
-::: warning In development
-The Microsoft 365 Apps import feature is in development and should be validated in your environment before production use. Import into Intune works, but import into Nerdio Manager is not yet working.
+::: warning Validation recommended
+The Microsoft 365 Apps workflow is available for both Intune and Nerdio Manager scenarios. Validate your XML configuration, packaging output, and tenant permissions before production use.
 :::
 
 Browse to a folder containing Office Deployment Tool XML configuration files and click **Load configurations**.
@@ -181,6 +191,8 @@ Use the action bar to configure packaging and import:
 - **Company name** - required value injected into package metadata
 - **Import Nerdio Manager Shell App** - builds and imports the package to Nerdio Manager
 - **Import Microsoft Intune Win32 App** - builds and imports the package to Intune
+
+For the Nerdio workflow in EvergreenUI 1.0.20, Workbench reads shell app definition files from a `shell-app` subdirectory next to the XML configurations, validates required files (`Definition.json`, `Detect.ps1`, `Install.ps1`, `Uninstall.ps1`), and creates the Shell App from that definition. This flow no longer depends on `IntuneWin32App` for Nerdio imports.
 
 Connection indicators on this tab show both Microsoft Intune and Nerdio Manager authentication status.
 

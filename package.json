@@ -8,6 +8,6 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
-    "swagger-ui": "^5.29.4"
+    "swagger-ui": "^5.32.6"
   }
 }

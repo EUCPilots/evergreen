@@ -8,7 +8,7 @@ The Desktop Workbench (EvergreenUI) is currently in pre-release. Features and co
 :::
 
 ::: info
-This page reflects EvergreenUI features and functions starting with version **1.0.20**.
+This page reflects EvergreenUI features and functions starting with version **1.0.21**.
 :::
 
 ## Launching the Workbench
@@ -152,7 +152,12 @@ Action values indicate what to do next:
 - **Fix in definition** - duplicate definition GUID or other definition issue
 - **-** - no action required
 
-Use **Compare with Microsoft Intune** to build the reconciliation list, then use **Import Win32 app** to process selected actionable rows.
+Use the action bar to manage definitions and import:
+
+- **Reload definitions** - reload the definitions list from disk
+- **Update definitions** - resolve the latest Evergreen version for each definition and update `App.json` and detection rules in place; the definitions list reloads automatically when complete
+- **Compare with Microsoft Intune** - build the reconciliation list
+- **Import Win32 app** - process selected actionable rows
 
 ### Nerdio Manager Shell Apps
 

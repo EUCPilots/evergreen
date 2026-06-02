@@ -6,7 +6,7 @@ layout: doc
 The Evergreen Workbench is a graphical interface for exploring application version data from the [Evergreen](/about) PowerShell module. It is available in two editions - a **Desktop Workbench** for Windows, and a **Web Workbench** that runs in any modern browser.
 
 ::: info
-This page reflects EvergreenUI features and functions starting with version **1.0.20**.
+This page reflects EvergreenUI features and functions starting with version **1.0.21**.
 :::
 
 ## Desktop vs Web

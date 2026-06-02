@@ -8,7 +8,7 @@ The Desktop Workbench (EvergreenUI) is currently in pre-release. Install with th
 :::
 
 ::: info
-This page reflects EvergreenUI features and functions starting with version **1.0.20**.
+This page reflects EvergreenUI features and functions starting with version **1.0.21**.
 :::
 
 ## Requirements

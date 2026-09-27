@@ -170,13 +170,11 @@ Sample response (200):
 - Error responses contain a human-readable `message` and may include a `documentation` URL.
 - For client errors (4xx) check the request (parameters, URL encoding). For server errors (5xx) retry later or contact the API operator.
 
-For detailed error response schemas, see the [interactive API documentation](/api-docs.html).
-
 ## Tips
 
 - When scripting, include small retry/backoff logic for transient network errors.
-- Use the [interactive API documentation](/api-docs.html) to explore all available endpoints.
+- Use the [interactive API documentation](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/) to explore all available endpoints.
 
 ## Where this doc came from
 
-This usage guide is derived from the OpenAPI 3.0 spec (version 1.6.0). For the complete specification with all endpoints, parameters, and response schemas, visit the [API documentation](/api-docs.html).
+This usage guide is derived from the OpenAPI 3.0 spec (version 1.6.0). For the complete specification with all endpoints, parameters, and response schemas, visit the [API documentation](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/).

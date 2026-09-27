@@ -4,18 +4,22 @@ layout: doc
 # How to use the Evergreen API
 
 ::: warning **The Evergreen API is provided free of charge - please don't abuse it**.
-The API is currently provided by the free tier of Cloudflare Workers which provides up to 100,000 total requests per day. The API is intended for development purposes only and not for use with distributed endpoints.
-    
-If you encounter issues or would prefer to ensure data is only sourced from the application vendor, use `Get-EvergreenApp`.
+The API is provided on the free tier of Cloudflare Workers which allows up to 100,000 total requests per day. Be kind with your usage of the API so the requests are not exhausted and available for everyone.
 :::
 
 Evergreen's difference to other methods of finding and installing applications, is that Evergreen queries only official vendor sources when you use `Get-EvergreenApp`. This ensures that the information returned can be trusted because it comes from the vendor and is not crowd sourced.
 
-Evergreen supports [an API](https://evergreen-api.stealthpuppy.com/) that returns the same application version information as `Get-EvergreenApp`. The API supports the same applications as the Evergreen module because data is sourced via the module. The API runs on Cloudflare Workers with data that is updated every 8 hours.
+Evergreen supports [an API](https://evergreen-api.stealthpuppy.com/) that returns the same application version information as `Get-EvergreenApp`. The API supports the same applications as the Evergreen module because data is sourced via the module. The API runs on Cloudflare Workers with data that is updated every 24 hours.
+
+Data that is returned by the Evergreen API can be viewed at the [Evergreen App Tracker](https://eucpilots.com/workbench/).
+
+::: info **Important notes about the API**
+* The API data is updated once every 24-hours. Requesting data from endpoints too often may be throttled.
+* The API is intended for development purposes only and not for use with distributed endpoints (e.g. physical PCs checking for application updates locally).
+* If you encounter issues or would prefer to ensure data is only sourced from the application vendor, use `Get-EvergreenApp`.
+:::
 
 Full documentation for the API is available here: [evergreen-api](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/1.0.1); however, if you're familiar with `Get-EvergreenApp` in the Evergreen module, the API should be easy to use.
-
-Data that is returned by the Evergreen API can be viewed at the [Evergreen App Tracker](https://stealthpuppy.com/apptracker/).
 
 ## Get-EvergreenAppFromApi
 
@@ -54,32 +58,32 @@ In its current version, the API has only four endpoints that support GET calls a
 In PowerShell, the API can be queried with `Invoke-RestMethod`.
 
 ::: warning **A custom user agent is required**.
-The default user agents of most tools will be blocked to minimise the abuse of the API. Please provide a custom user agent when using tools such as PowerShell, wget, or curl etc. Please specify a custom user agent that will assist in troubleshooting and understand who is using the API (logging data is not made public). For example, specify a custom user agent in the form of "company name/location", or similar.
+The default user agents of most tools will be blocked to minimise the abuse of the API. Please provide a custom user agent when using tools such as PowerShell, wget, or curl etc. Please specify a custom user agent that will assist in troubleshooting and understand who is using the API (logging data is not made public). For example, specify a custom user agent in the form of "App-Pipeline/1.0.0 (Contoso; https://contoso.com)", or similar.
 :::
 
 Return the list of supported applications from `/apps` - this is the equivalent of running `Find-EvergreenApp`:
 
 ```powershell
-PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/apps" -UserAgent "company/location"
+PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/apps" -UserAgent "App-Pipeline/1.0.0 (Contoso; https://contoso.com)"
 ```
 
 Details for a specific application are returned from the `/app/{appName}` endpoint along with the name of the supported application.
 
 ```powershell
-PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge" -UserAgent "company/location"
+PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge" -UserAgent "App-Pipeline/1.0.0 (Contoso; https://contoso.com)"
 ```
 
 Data returned from the API can be  filtered and sent to `Save-EvergreenApp` to download binaries:
 
 ```powershell
-$Edge = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge" -UserAgent "company/location"
+$Edge = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge" -UserAgent "App-Pipeline/1.0.0 (Contoso; https://contoso.com)"
 $Edge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" } | Save-EvergreenApp -Path "C:\Apps"
 ```
 
 If an unknown application is passed to the `/app` endpoint, an error is returned:
 
 ```powershell
-PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/UnsupportedApp" -UserAgent "company/location"
+PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/UnsupportedApp" -UserAgent "App-Pipeline/1.0.0 (Contoso; https://contoso.com)"
 Invoke-RestMethod:                                                                                                      
 {
   "message": "Application not found. Call /apps for a list of available applications.",

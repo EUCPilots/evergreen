@@ -32,7 +32,7 @@ These are the most commonly used endpoints. See the [interactive API documentati
 Request (curl):
 
 ```bash
-curl -sS -H "User-Agent: company/location" "https://evergreen-api.stealthpuppy.com/apps"
+curl -sS -H "User-Agent: App-Pipeline/1.0.0 (Contoso; https://contoso.com)" "https://evergreen-api.stealthpuppy.com/apps"
 ```
 
 Sample response (200):
@@ -55,7 +55,7 @@ Sample response (200):
 PowerShell (Invoke-RestMethod):
 
 ```powershell
-Invoke-RestMethod -Uri 'https://evergreen-api.stealthpuppy.com/apps' -Method Get -Headers @{'User-Agent' = 'company/location'}
+Invoke-RestMethod -Uri 'https://evergreen-api.stealthpuppy.com/apps' -Method Get -Headers @{'User-Agent' = 'App-Pipeline/1.0.0 (Contoso; https://contoso.com)'}
 ```
 
 Node (fetch):
@@ -65,7 +65,7 @@ const fetch = require('node-fetch');
 async function listApps(){
   const res = await fetch('https://evergreen-api.stealthpuppy.com/apps', {
     headers: {
-      'User-Agent': 'company/location'
+      'User-Agent': 'App-Pipeline/1.0.0 (Contoso; https://contoso.com)'
     }
   });
   const json = await res.json();
@@ -79,7 +79,7 @@ Python (requests):
 ```python
 import requests
 
-headers = {'User-Agent': 'company/location'}
+headers = {'User-Agent': 'App-Pipeline/1.0.0 (Contoso; https://contoso.com)'}
 resp = requests.get('https://evergreen-api.stealthpuppy.com/apps', headers=headers)
 resp.raise_for_status()
 data = resp.json()
@@ -91,7 +91,7 @@ print(data)
 Request (curl) - replace `MicrosoftEdge` with the Name value from `/apps`:
 
 ```bash
-curl -sS -H "User-Agent: company/location" "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge"
+curl -sS -H "User-Agent: App-Pipeline/1.0.0 (Contoso; https://contoso.com)" "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge"
 ```
 
 Sample response (200):
@@ -115,7 +115,7 @@ GET /endpoints/versions and GET /endpoints/downloads return arrays of hostnames 
 Sample call (curl):
 
 ```bash
-curl -sS -H "User-Agent: company/location" "https://evergreen-api.stealthpuppy.com/endpoints/versions"
+curl -sS -H "User-Agent: App-Pipeline/1.0.0 (Contoso; https://contoso.com)" "https://evergreen-api.stealthpuppy.com/endpoints/versions"
 ```
 
 Sample response (200):

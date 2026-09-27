@@ -77,7 +77,7 @@ The list of URLs used to determine application versions is used by the Evergreen
 Here is an example using `Invoke-RestMethod` to return the list of URLs used by Evergreen to determine application versions:
 
 ```powershell
-PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/versions" -UserAgent "company/location"
+PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/versions" -UserAgent "App-Pipeline/1.0.0 (Contoso; https://contoso.com)"
 ```
 
 ### Return a list of URLs used to download application installers
@@ -87,7 +87,7 @@ This list of URLs is used when downloading application installers as determined 
 Here is an example using `Invoke-RestMethod` to return the list of URLs used by Evergreen when downloading application installers with `Save-EvergreenApp`:
 
 ```powershell
-PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/downloads" -UserAgent "company/location"
+PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/downloads" -UserAgent "App-Pipeline/1.0.0 (Contoso; https://contoso.com)"
 ```
 
 ### Output
@@ -109,7 +109,7 @@ Output returns from both of these endpoints is in JSON format - the name of the 
 If you are using PowerShell, use `Invoke-RestMethod` to return an object of applications and endpoints:
 
 ```powershell
-$Endpoints = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/versions" -UserAgent "company/location"
+$Endpoints = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/versions" -UserAgent "App-Pipeline/1.0.0 (Contoso; https://contoso.com)"
 $Endpoints | Where-Object { $_.Application -eq "MicrosoftEdge" }
 
 Application   Endpoints                                      Ports

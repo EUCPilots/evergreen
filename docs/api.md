@@ -19,7 +19,7 @@ Data that is returned by the Evergreen API can be viewed at the [Evergreen App T
 * If you encounter issues or would prefer to ensure data is only sourced from the application vendor, use `Get-EvergreenApp`.
 :::
 
-Full documentation for the API is available here: [evergreen-api](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/1.0.1); however, if you're familiar with `Get-EvergreenApp` in the Evergreen module, the API should be easy to use.
+Full documentation for the API is available here: [evergreen-api](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/); however, if you're familiar with `Get-EvergreenApp` in the Evergreen module, the API should be easy to use.
 
 ## Get-EvergreenAppFromApi
 
@@ -58,7 +58,7 @@ In its current version, the API has only four endpoints that support GET calls a
 In PowerShell, the API can be queried with `Invoke-RestMethod`.
 
 ::: warning **A custom user agent is required**.
-The default user agents of most tools will be blocked to minimise the abuse of the API. Please provide a custom user agent when using tools such as PowerShell, wget, or curl etc. Please specify a custom user agent that will assist in troubleshooting and understand who is using the API (logging data is not made public). For example, specify a custom user agent in the form of "App-Pipeline/1.0.0 (Contoso; https://contoso.com)", or similar.
+The default user agents of most tools will be blocked to minimise the abuse of the API. Please provide a custom user agent when using tools such as PowerShell, wget, or curl etc. Please specify a custom user agent that will assist in troubleshooting and understand who is using the API (logging data is not made public). For example, specify a custom user agent in the form of "Application/Version (Company/URL)" - e.g., "App-Pipeline/1.0.0 (Contoso; https://contoso.com)", or similar.
 :::
 
 Return the list of supported applications from `/apps` - this is the equivalent of running `Find-EvergreenApp`:

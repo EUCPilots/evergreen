@@ -5,7 +5,7 @@ layout: doc
 
 This page explains how to call the Evergreen API (OpenAPI 3.0, version 1.5.2). It summarises the base URL(s), authentication, common endpoints, example requests (curl, PowerShell, and Node), common responses, and tips for use.
 
-**💡 For interactive API exploration, see the [complete API documentation with Swagger UI](/api-docs.html).**
+**💡 For interactive API exploration, see the [complete API documentation with Swagger UI](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/).**
 
 ## Base URLs
 
@@ -25,7 +25,7 @@ All endpoints in this documentation are relative to the base URL.
 - GET /endpoints/versions - Returns hostnames used by Evergreen when returning version numbers and downloads
 - GET /endpoints/downloads - Returns hostnames used by Evergreen when downloading application installers
 
-These are the most commonly used endpoints. See the [interactive API documentation](/api-docs.html) for full details.
+These are the most commonly used endpoints.
 
 ### Example: List supported applications (GET /apps)
 

@@ -97,7 +97,7 @@ export default defineConfig({
           { text: 'Under the hood', link: '/under' },
           { text: 'Troubleshooting', link: '/troubleshoot' },
           { text: 'Known issues', link: '/issues' },
-          { text: 'Change log', link: '/changelog' },
+          { text: 'Change log', link: 'https://github.com/EUCPilots/evergreen-module/blob/main/CHANGELOG.md' },
           { text: 'PowerShell Gallery', link: 'https://www.powershellgallery.com/packages/Evergreen/' }
         ]
       },

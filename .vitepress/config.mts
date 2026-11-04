@@ -119,6 +119,8 @@ export default defineConfig({
           { text: 'Get-EvergreenAppFromApi', link: '/help/en-US/Get-EvergreenAppFromApi' },
           { text: 'Get-EvergreenEndpointFromApi', link: '/help/en-US/Get-EvergreenEndpointFromApi' },
           { text: 'Get-EvergreenAppsPath', link: '/help/en-US/Get-EvergreenAppsPath' },
+          { text: 'Get-EvergreenAppsVersion', link: '/help/en-US/Get-EvergreenAppsVersion' },
+          { text: 'Remove-EvergreenLibraryAppVersion', link: '/help/en-US/Remove-EvergreenLibraryAppVersion' },
           { text: 'Update-Evergreen', link: '/help/en-US/Update-Evergreen' },
           { text: 'ConvertTo-DotNetVersionClass', link: '/help/en-US/ConvertTo-DotNetVersionClass' }
         ]

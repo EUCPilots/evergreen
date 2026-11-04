@@ -5,9 +5,9 @@ layout: doc
 
 Evergreen includes the function `Save-EvergreenApp` that simplifies downloading application installers that are returned from `Get-EvergreenApp`.
 
-All applications will return at least a `Version` and `URI` property with many returning additional properties including `Architecture`, `Language`, `Type`, `Ring`, `Channel` and `Release`, dependent on the target application. Additionally, the installer file name is typically determined dynamically  with the `URI` property.
+All applications return at least a `Version` and `URI` property, and many return additional properties such as `Architecture`, `Language`, `Type`, `Ring`, `Channel`, and `Release`. The installer file name is typically determined dynamically from the `URI` property.
 
-To retrieve and download an application installer, we need to use code similar to the following that the filters for the required download and determines the file name before using `Invoke-WebRequest` to download the file.
+To retrieve and download an application installer without `Save-EvergreenApp`, filter the output for the required download, determine the file name, and use `Invoke-WebRequest`:
 
 ```powershell
 $Teams = Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" -and $_.Release -eq "Enterprise" }
@@ -15,7 +15,7 @@ $TeamsInstaller = Split-Path -Path $Teams.Uri -Leaf
 Invoke-WebRequest -Uri $Teams.Uri -OutFile ".\$TeamsInstaller" -UseBasicParsing
 ```
 
-This is a simple example, but an application with additional properties and output values is likely to require more complex code to download. For example, Microsoft OneDrive includes a few additional properties and several items in the returned object
+This is a simple example, but applications with additional properties and output values may require more complex filtering. For example, Microsoft Edge includes several properties in its returned object:
 
 ```powershell
 Version      : 89.0.774.68
@@ -34,9 +34,9 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
 Get-EvergreenApp -Name MicrosoftOneDrive | Save-EvergreenApp -Path "C:\Apps\OneDrive"
 ```
 
-`Save-EvergreenApp` will create a folder structure below the path provided (e.g. `C:\Apps\OneDrive`) built from the various properties in the application object passed to it. A folder structure, based on the available properties in the following list will be created in this order - `Channel`, `Release`, `Ring`, `Version`, `Language`, `Architecture`.
+With `-Path`, `Save-EvergreenApp` creates a folder structure below the specified path using whichever of these properties are present on each application object, in this order: `Product`, `Track`, `Channel`, `Release`, `Ring`, `Version`, `Language`, and `Architecture`.
 
-`Save-EvergreenApp` will return the path to each downloaded file that can be used passed to other functions in a script.
+`Save-EvergreenApp` returns the path to each downloaded file, which can be passed to other functions in a script.
 
 In the example using `MicrosoftOneDrive` above, `Save-EvergreenApp` returns output similar to this:
 
@@ -55,39 +55,47 @@ To download application installers into a single directory, the `-CustomPath` pa
 Save-EvergreenApp will only download the first installer passed to the function where the object includes multiple installers with the same file name.
 :::
 
-Therefore, when using `-CustomPath`, it would best to filter the output from `Get-EvergreenApp` before passing it to `Save-EvergreenApp`. For example:
+Therefore, when using `-CustomPath`, it is best to filter the output from `Get-EvergreenApp` before passing it to `Save-EvergreenApp`. For example:
 
 ```powershell
-Get-EvergreenApp -Name MicrosoftOneDrive | `
-    | Where-Object { $_.Ring -eq "Enterprise" -and $_.Architecture -eq "AMD64" -and $_.Type -eq "exe" } | `
-    Save-EvergreenApp -Path "C:\Apps\OneDrive"
+Get-EvergreenApp -Name MicrosoftOneDrive |
+    Where-Object { $_.Ring -eq "Enterprise" -and $_.Architecture -eq "AMD64" -and $_.Type -eq "exe" } |
+    Save-EvergreenApp -CustomPath "C:\Apps\OneDrive"
 ```
 
 ## Parameters
 
 ### InputObject
 
-An object returned from `Get-EvergreenApp` with at least the `Version` and `URI` properties.
+An application object with a `URI` property. When using `-Path`, the object must also include a `Version` property.
 
 ### Path
 
-The parent directory under which a directory structure will be created and application installers saved into. Typically the target path used will be a path per application.
+The parent directory under which a directory structure will be created and application installers saved. Use either `-Path` or `-CustomPath`, not both.
 
 ### CustomPath
 
-The target directory into which the application installers will be directly saved into. Typically the target path used will be a path per application.
+The directory into which installers will be saved directly, without subdirectories. Use either `-CustomPath` or `-Path`, not both.
 
-### Verbose
-
-The `-Verbose` parameter can be useful for observing application downloads and save paths, including troubleshooting when the expected application details are not returned. When using the `-Verbose` parameter, `Invoke-WebRequest` will show download progress which significantly impacts download speed. To suppress download progress, add the `-NoProgress` switch parameter as well.
-
-### -NoProgress
+### NoProgress
 
 `Save-EvergreenApp` uses `Invoke-WebRequest` to download target application installers. Download progress is suppressed by default for faster downloads; however, when `-Verbose` is used, download progress will be displayed. Use `-NoProgress` with `-Verbose` to suppress download progress while also displaying verbose output.
 
 ### -Force
 
 Forces this function to download the target application installers from the URI property even if they already exist in the target directory.
+
+### -VerifyChecksum
+
+Validates any `SHA1`, `SHA256`, and `SHA512` checksum properties on the input object against the downloaded or existing file. Files with mismatched checksums are not returned.
+
+### Retry options
+
+Downloads are retried for transient network failures and retryable HTTP responses. The defaults are three retries after the initial attempt (`-RetryCount 3`), a two-second initial delay (`-RetryDelaySeconds 2`), and a maximum delay of 300 seconds (`-MaximumRetryDelaySeconds 300`). Retry delays increase exponentially, and a server's `Retry-After` header is honored up to the maximum delay.
+
+### Timeout options
+
+`-ConnectionTimeoutSeconds` sets the connection timeout and defaults to 30 seconds. `-OperationTimeoutSeconds` sets the timeout between data reads and defaults to 300 seconds; it is supported by `Invoke-WebRequest` in PowerShell 7.4 and later.
 
 ## Alias
 

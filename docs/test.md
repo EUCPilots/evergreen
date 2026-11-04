@@ -3,38 +3,37 @@ layout: doc
 ---
 # Test Installers
 
-Evergreen includes the function `Test-EvergreenApp` that can test whether the application installer URLs returned from `Get-EvergreenApp` exist at the URL specified. `Test-EvergreenApp` will enable you to quickly validate whether the application installer exists.
+`Test-EvergreenApp` checks whether installer URLs returned by `Get-EvergreenApp` are accessible. It first sends a `HEAD` request and retries a failed request with a ranged `GET`. The output includes the URI, a Boolean result, and the HTTP status code when available.
 
-In the following example, we can test whether the URLs returned by `MicrosoftOneDrive` exist:
+In this example, the URLs returned by Microsoft OneDrive are checked:
 
 ```powershell
-Get-EvergreenApp -Name "MicrosoftOneDrive" | Where-Object { $_.Type -eq "exe" } | Test-EvergreenApp
+Get-EvergreenApp -Name "MicrosoftOneDrive" |
+    Where-Object { $_.Type -eq "exe" } |
+    Test-EvergreenApp
+```
 
-URI                                                                            Result
----                                                                            ------
-https://oneclient.sfx.ms/Win/MsitFast/22.082.0417.0001/amd64/OneDriveSetup.exe   True
-https://oneclient.sfx.ms/Win/MsitFast/22.082.0417.0001/OneDriveSetup.exe         True
-https://oneclient.sfx.ms/Win/Insiders/22.077.0410.0007/OneDriveSetup.exe         True
-https://oneclient.sfx.ms/Win/Insiders/22.077.0410.0007/amd64/OneDriveSetup.exe   True
-https://oneclient.sfx.ms/Win/MsitSlow/22.077.0410.0006/OneDriveSetup.exe         True
-https://oneclient.sfx.ms/Win/MsitSlow/22.077.0410.0006/amd64/OneDriveSetup.exe   True
-https://oneclient.sfx.ms/Win/Insiders/22.070.0403.0004/amd64/OneDriveSetup.exe   True
-https://oneclient.sfx.ms/Win/Insiders/22.070.0403.0004/OneDriveSetup.exe         True
-https://oneclient.sfx.ms/Win/Prod/22.065.0412.0004/amd64/OneDriveSetup.exe       True
-https://oneclient.sfx.ms/Win/Prod/22.065.0412.0004/OneDriveSetup.exe             True
-https://oneclient.sfx.ms/Win/Enterprise/21.230.1107.0004/OneDriveSetup.exe       True
-https://oneclient.sfx.ms/Win/Enterprise/21.230.1107.0004/amd64/OneDriveSetup.…   True
+Output:
+
+```text
+Result StatusCode URI
+------ ---------- ---
+  True        200 https://example.com/installer.exe
 ```
 
 ## Parameters
 
 ### InputObject
 
-An object returned from `Get-EvergreenApp` with at least the `Version` and `URI` properties.
+An application object with a non-empty `URI` property. Objects without a valid URI produce a warning and a `False` result.
 
-### Verbose
+### Request options
 
-The `-Verbose` parameter can be useful for observing application downloads and save paths, including troubleshooting when the expected application details are not returned. When using the `-Verbose` parameter, `Invoke-WebRequest` will show download progress which significantly impacts download speed. To suppress download progress, add the `-NoProgress` switch parameter as well.
+`-ConnectionTimeoutSeconds` sets the request timeout (30 seconds by default). `-UserAgent` overrides the default user agent. Use `-Proxy` to specify a proxy server; `-ProxyCredential` can provide credentials and requires `-Proxy`.
+
+### NoProgress
+
+Progress is suppressed by default. When `-Verbose` is used, request progress is displayed unless `-NoProgress` is also specified. Use `-Verbose` to see which URI is being tested.
 
 ## Alias
 

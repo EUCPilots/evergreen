@@ -35,12 +35,13 @@ Update-Evergreen -Release "v25.10.02.22" -Force
 
 ## Update behaviour
 
-Evergreen uses the following behaviour and rules when
+Evergreen uses the following behaviour and rules when updating the cache:
 
 * When the Evergreen module is imported, a check is made for the latest release and the administrator is notified whether the local cache is out of date.
 * Running `Update-Evergreen` is required - the local cache is not automatically updated when the module is imported.
 * When running `Update-Evergreen`, if the local cache is out of date, the cache is automatically updated to the latest release.
-* If you make direct changes to the local cache, and the remote release and local cache versions match, `Update-Evergreen` will display the mismatched files, but will not perform an update. Run `Update-Evergreen -Force` to re-sync the local cache.
+* When the local cache version matches the latest release, `Update-Evergreen` checks the cached files against the release's SHA-256 checksums. It reports missing or modified files but does not automatically replace them; run `Update-Evergreen -Force` to re-sync the cache.
+* Before installing files from a downloaded release, `Update-Evergreen` validates their SHA-256 checksums. If validation fails, the local applications and manifests are not replaced.
 * If you download a specific Evergreen apps release, the local cache will be out of date. If you run `Update-Evergreen` again, the local cache will be updated to the latest release.
 
 ## Cache location

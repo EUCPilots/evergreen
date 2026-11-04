@@ -25,17 +25,22 @@ An Evergreen library is a directory on a file system that contains `EvergreenLib
         {
             "Name": "MicrosoftOneDrive",
             "EvergreenApp": "MicrosoftOneDrive",
-            "Filter": "$_.Architecture -eq \"AMD64\" -and $_.Ring -eq \"Production\""
+            "Filter": "$_.Architecture -eq \"x64\" -and $_.Ring -eq \"Production\" -and $_.Throttle -eq \"100\""
         },
         {
             "Name": "MicrosoftEdge",
             "EvergreenApp": "MicrosoftEdge",
-            "Filter": "$_.Platform -eq \"Windows\" -and $_.Channel -eq \"Stable\" -and $_.Release -eq \"Enterprise\" -and $_.Architecture -eq \"x64\""
+            "Filter": "$_.Channel -eq \"Stable\" -and $_.Architecture -eq \"x64\" -and $_.Release -eq \"Enterprise\""
+        },
+        {
+            "Name": "MicrosoftEdgeWebView2Runtime",
+            "EvergreenApp": "MicrosoftEdgeWebView2Runtime",
+            "Filter": "$_.Channel -eq \"Stable\" -and $_.Architecture -eq \"x64\""
         },
         {
             "Name": "MicrosoftTeams",
             "EvergreenApp": "MicrosoftTeams",
-            "Filter": "$_.Ring -eq \"General\" -and $_.Architecture -eq \"x64\" -and $_.Type -eq \"msi\""
+            "Filter": "$_.Architecture -eq \"x64\" -and $_.Release -eq \"Enterprise\""
         }
     ]
 }
@@ -45,17 +50,24 @@ The filter can define any property from an application version object, so that y
 
 ## Creating an Evergreen library
 
-To create a new Evergreen library, use `New-EvergreenLibrary` and specifiy a valid local or UNC path:
+To create a new Evergreen library, use `New-EvergreenLibrary` and specify a valid local or UNC path:
 
 ```powershell
 New-EvergreenLibrary -Path "\\server\EvergreenLibrary"
 ```
 
-`New-EvergreenLibrary` will create the target directory and copy the default `EvergreenLibrary.json` into the path. The library will now be ready to download the 64-bit, release versions of:
+`New-EvergreenLibrary` creates the target directory if needed and writes the default `EvergreenLibrary.json` if one does not already exist. Use `-Name` to set the library name in the configuration:
 
-* Microsoft.NET Desktop Runtime
-* Microsoft OneDrive
-* Microsoft Edge
-* Microsoft Teams
+```powershell
+New-EvergreenLibrary -Path "\\server\EvergreenLibrary" -Name "ProductionApps"
+```
 
-If you would like to customise the library, open `EvergreenLibrary.json` in a JSON editor (e.g. Visual Studio Code) and add or remove applications as required.
+The default configuration includes 64-bit release versions of:
+
+* Microsoft .NET Desktop Runtime (LTS)
+* Microsoft OneDrive (Production, throttle 100)
+* Microsoft Edge (Stable Enterprise)
+* Microsoft Edge WebView2 Runtime (Stable)
+* Microsoft Teams (Enterprise)
+
+To customize the library, edit `EvergreenLibrary.json` in a JSON editor (e.g. Visual Studio Code) and add or remove applications as required. If the file already exists, `New-EvergreenLibrary` leaves it unchanged.

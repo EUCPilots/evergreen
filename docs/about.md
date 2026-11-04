@@ -30,13 +30,20 @@ There are several community and commercial solutions that manage application dep
 
 Primary functions in Evergreen are:
 
-* `Get-EvergreenApp` - returns details of the latest release of an application including the version number and download URL for supported applications. Runs in your environment
-* `Save-EvergreenApp` - simplifies downloading application installers returned from `Get-EvergreenApp`
-* `Get-EvergreenEndpointFromApi` - returns details of the latest release of an application including the version number and download URL from the Evergreen API
 * `Find-EvergreenApp` - lists applications supported by the module
-* `Test-EvergreenApp` - tests that the URIs returned by `Get-EvergreenApp` are valid
-* `New-EvergreenLibrary` - creates a new Evergreen library for downloading and maintaining multiple versions of application installers
-* `Start-EvergreenLibraryUpdate` - updates the application installers and database of apps stored in an Evergreen library
-* `Get-EvergreenAppFromLibrary` - returns details of applications stored in an Evergreen library
-* `Export-EvergreenApp.ps1` - exports the application version information returned from `Get-EvergreenApp` to a JSON file
-* `Get-EvergreenEndpointFromApi` - returns the list of endpoints used by Evergreen that can be imported into a firewall or proxy server allow list
+* `Get-EvergreenApp` - retrieves application version and download details directly from vendor sources in your environment
+* `Get-EvergreenAppFromApi` - retrieves application details from the Evergreen API
+* `Get-EvergreenEndpointFromApi` - lists the endpoints used to retrieve version information and download installers
+* `Save-EvergreenApp` - downloads installers returned by Evergreen
+* `Test-EvergreenApp` - checks whether installer URIs are accessible
+* `Export-EvergreenApp` - exports application version information to a JSON file
+* `Export-EvergreenManifest` - returns an application's Evergreen manifest as a hashtable
+* `New-EvergreenLibrary` - creates a library configuration for storing application installers
+* `Start-EvergreenLibraryUpdate` - downloads configured installers and updates the library inventory
+* `Get-EvergreenLibrary` - reads a local or remote library and its application inventory
+* `Get-EvergreenAppFromLibrary` - retrieves application versions stored in a library
+* `Remove-EvergreenLibraryAppVersion` - prunes older installer versions from a library
+* `Update-Evergreen` - downloads or updates the local application functions and manifests
+* `Get-EvergreenAppsPath` - returns the local application cache path
+* `Get-EvergreenAppsVersion` - returns the latest release version of the Evergreen apps repository
+* `ConvertTo-DotNetVersionClass` - converts a version string to a .NET `System.Version`

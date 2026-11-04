@@ -85,14 +85,6 @@ This typically occurs right after the release of a new version of the Workspace 
 
 Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may not return the latest version of the Citrix Workspace app. This is due to Citrix making changes to the update feed at `https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml` to throttle or prevent automatic rollout of the latest Workspace app. The only recourse is to wait until Citrix corrects the update feed to include the latest version of the Workspace app again.
 
-### FileZilla
-
-`FileZilla` does not currently return data on PowerShell Core and inconsistently returns data on Windows PowerShell. FileZilla uses a self-signed certificate on their update server and the server uses HSTS, which present some challenges with getting Evergreen to work with the server.
-
-::: info
-`FileZilla` has been removed from Evergreen until a better solution can be identified.
-:::
-
 ### GhislerTotalCommander
 
 This application function works OK without additional requirements on Windows, but requires installation of the `DnsClient-PS` PowerShell module on macOS or Linux.
@@ -115,10 +107,6 @@ Channel properties are listed in the following articles: [Configuration options 
 
 Full channel names are listed here: [Update history for Microsoft 365 Apps](https://docs.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date).
 
-### MicrosoftTeamsClassic
-
-The version number returned by the Microsoft Teams update API may be slightly different to the version number displayed in the `ProductVersion` property in the MSI or in Programs and Features. For example, `Get-EvergreenApp -Name MicrosoftTeams` may report a version number of `1.4.00.8872`, but the Windows Installer may report `1.4.0.8872`. Also see [Get-MicrosoftTeams displays slightly wrong formatted version number](https://github.com/eucpilots/evergreen-module/issues/58).
-
 ### MicrosoftWvdRemoteDesktop
 
 `MicrosoftWvdRemoteDesktop` may report an HTTP 503 error from some URLs (see an example below). This is intermittent behavior, but the function should still usable data. Suppress this warning with `-WarningAction "SilentlyContinue".
@@ -137,8 +125,6 @@ WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://
 ### MozillaFirefox
 
 #### Language Support
-
-`MozillaFirefox` will only return the English US installer by default. This has been done due to the lengthy amount of time that the function takes to query the Mozilla site to find the installers for each channel, architecture and file type. This could be up to 12 objects for each language - if the supported languages are included by default, then the function will take several minutes to return an object.
 
 Any supported language can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}` will return the English (UK) and Spanish language installers for Firefox.
 

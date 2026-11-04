@@ -10,17 +10,26 @@ Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"
 
 Library   : @{Name=EvergreenLibrary; Applications=System.Object[]}
 Inventory : {@{ApplicationName=Microsoft.NET; Versions=}, @{ApplicationName=MicrosoftOneDrive; Versions=System.Object[]}, @{ApplicationName=MicrosoftEdge; Versions=System.Object[]},
-            @{ApplicationName=MicrosoftTeams; Versions=}}
+            @{ApplicationName=MicrosoftEdgeWebView2Runtime; Versions=System.Object[]}, @{ApplicationName=MicrosoftTeams; Versions=}}
 ```
+
+`Get-EvergreenLibrary` can also read a library hosted in an Azure Storage container. Pass the HTTPS URI to the library configuration file:
+
+```powershell
+Get-EvergreenLibrary -Uri "https://<storage-account>.blob.core.windows.net/<container>/EvergreenLibrary.json"
+```
+
+The remote library returns the same `Library` and `Inventory` properties as a local library.
 
 The object returned contains two properties - `Library` which is the library defined in `EvergreenLibrary.json`:
 
 ```powershell
 Name         : EvergreenLibrary
 Applications : {@{Name=Microsoft.NET; EvergreenApp=Microsoft.NET; Filter=$_.Architecture -eq "x64" -and $_.Installer -eq "windowsdesktop" -and $_.Channel -eq "LTS"},
-               @{Name=MicrosoftOneDrive; EvergreenApp=MicrosoftOneDrive; Filter=$_.Architecture -eq "AMD64" -and $_.Ring -eq "Production"}, @{Name=MicrosoftEdge;
-               EvergreenApp=MicrosoftEdge; Filter=$_.Platform -eq "Windows" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" -and $_.Architecture -eq "x64"},
-               @{Name=MicrosoftTeams; EvergreenApp=MicrosoftTeams; Filter=$_.Ring -eq "General" -and $_.Architecture -eq "x64" -and $_.Type -eq "msi"}}
+               @{Name=MicrosoftOneDrive; EvergreenApp=MicrosoftOneDrive; Filter=$_.Architecture -eq "x64" -and $_.Ring -eq "Production" -and $_.Throttle -eq "100"},
+               @{Name=MicrosoftEdge; EvergreenApp=MicrosoftEdge; Filter=$_.Channel -eq "Stable" -and $_.Architecture -eq "x64" -and $_.Release -eq "Enterprise"},
+               @{Name=MicrosoftEdgeWebView2Runtime; EvergreenApp=MicrosoftEdgeWebView2Runtime; Filter=$_.Channel -eq "Stable" -and $_.Architecture -eq "x64"},
+               @{Name=MicrosoftTeams; EvergreenApp=MicrosoftTeams; Filter=$_.Architecture -eq "x64" -and $_.Release -eq "Enterprise"}}
 ```
 
 And `Inventory` which is the application version information for each application in the library:

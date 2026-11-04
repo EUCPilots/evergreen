@@ -1,0 +1,57 @@
+---
+layout: doc
+---
+# Evergreen ライブラリの詳細を取得する
+
+ライブラリにデータを格納すると、ライブラリ構成ファイル、各アプリケーションのバージョン情報、アプリケーション インストーラーなど、ライブラリを説明する情報が含まれます。時間の経過とともに、ライブラリには複数のアプリケーションとバージョンの情報が蓄積されます。`Get-EvergreenLibrary` を使うと、ライブラリからアプリケーション情報を取得できます。
+
+```powershell
+Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"
+
+Library   : @{Name=EvergreenLibrary; Applications=System.Object[]}
+Inventory : {@{ApplicationName=Microsoft.NET; Versions=}, @{ApplicationName=MicrosoftOneDrive; Versions=System.Object[]}, @{ApplicationName=MicrosoftEdge; Versions=System.Object[]},
+            @{ApplicationName=MicrosoftEdgeWebView2Runtime; Versions=System.Object[]}, @{ApplicationName=MicrosoftTeams; Versions=}}
+```
+
+`Get-EvergreenLibrary` は、Azure Storage コンテナーでホストされているライブラリも読み取れます。ライブラリ構成ファイルの HTTPS URI を渡します。
+
+```powershell
+Get-EvergreenLibrary -Uri "https://<storage-account>.blob.core.windows.net/<container>/EvergreenLibrary.json"
+```
+
+リモート ライブラリも、ローカル ライブラリと同じ `Library` および `Inventory` プロパティを返します。
+
+返されるオブジェクトには 2 つのプロパティがあります。`Library` は `EvergreenLibrary.json` で定義されたライブラリです。
+
+```powershell
+Name         : EvergreenLibrary
+Applications : {@{Name=Microsoft.NET; EvergreenApp=Microsoft.NET; Filter=$_.Architecture -eq "x64" -and $_.Installer -eq "windowsdesktop" -and $_.Channel -eq "LTS"},
+               @{Name=MicrosoftOneDrive; EvergreenApp=MicrosoftOneDrive; Filter=$_.Architecture -eq "x64" -and $_.Ring -eq "Production" -and $_.Throttle -eq "100"},
+               @{Name=MicrosoftEdge; EvergreenApp=MicrosoftEdge; Filter=$_.Channel -eq "Stable" -and $_.Architecture -eq "x64" -and $_.Release -eq "Enterprise"},
+               @{Name=MicrosoftEdgeWebView2Runtime; EvergreenApp=MicrosoftEdgeWebView2Runtime; Filter=$_.Channel -eq "Stable" -and $_.Architecture -eq "x64"},
+               @{Name=MicrosoftTeams; EvergreenApp=MicrosoftTeams; Filter=$_.Architecture -eq "x64" -and $_.Release -eq "Enterprise"}}
+```
+
+`Inventory` は、ライブラリ内の各アプリケーションのバージョン情報です。
+
+```powershell
+ApplicationName : Microsoft.NET
+Versions        : @{Version=6.0.7; URI=https://download.visualstudio.microsoft.com/download/pr/dc0e0e83-0115-4518-8b6a-590ed594f38a/65b63e41f6a80decb37fa3c5af79a53d/windowsdesktop-runtime-6
+                  .0.7-win-x64.exe; Type=exe; Installer=windowsdesktop; Channel=LTS; Architecture=x64}
+
+ApplicationName : MicrosoftOneDrive
+Versions        : {@{Version=22.131.0619.0001; URI=https://oneclient.sfx.ms/Win/Prod/22.131.0619.0001/amd64/OneDriveSetup.exe; Type=exe;
+                  Sha256=oRJK6vbSwqa8EUWBwjnXitZxz8r4RDrTcamdbEB20Mg=; Ring=Production; Architecture=AMD64}, @{Version=22.141.0703.0002;
+                  URI=https://oneclient.sfx.ms/Win/Prod/22.141.0703.0002/amd64/OneDriveSetup.exe; Type=exe; Sha256=4jrVokZX9R7AGT9wyrwdVeQWxW1q1/4YTYW/A+EVUrk=; Ring=Production;
+                  Architecture=AMD64}}
+
+ApplicationName : MicrosoftEdge
+Versions        : {@{Version=103.0.1264.62;
+                  URI=https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/4a067ebd-1766-4463-a54b-1e5a525cb90f/MicrosoftEdgeEnterpriseX64.msi; Release=Enterprise;
+                  Platform=Windows; Hash=5DA115179E6D4C84B5204BC135ABCB81AA8512C2AD0909440663E8332EE20FD0; Channel=Stable; Architecture=x64}, @{Version=103.0.1264.71;
+                  URI=https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/52956063-8ecb-4407-9ac1-52db779bb126/MicrosoftEdgeEnterpriseX64.msi; Release=Enterprise;
+                  Platform=Windows; Hash=9AB4B17469440056F2E59D7AA04622C6584DC8B47C087300DC97D979AC7D9F99; Channel=Stable; Architecture=x64}}
+
+ApplicationName : MicrosoftTeams
+Versions        : @{Version=1.5.00.17656; URI=https://statics.teams.cdn.office.net/production-windows-x64/1.5.00.17656/Teams_windows_x64.msi; Type=msi; Ring=General; Architecture=x64}
+```

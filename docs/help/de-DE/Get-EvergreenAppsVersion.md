@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://eucpilots.com/evergreen/help/en-US/Get-EvergreenAppsVersion/
+online version: https://eucpilots.com/evergreen/help/en-us/Get-EvergreenAppsVersion/
 schema: 2.0.0
 ---
 

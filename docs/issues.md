@@ -89,10 +89,6 @@ Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may not return the la
 
 This application function works OK without additional requirements on Windows, but requires installation of the `DnsClient-PS` PowerShell module on macOS or Linux.
 
-### GoogleChrome
-
-The MSI installer available for the Stable channel does not match the version number returned for the Stable channel. The version number in the MSI file does match the MSI installer returned for the Extended channel. The MSI available for the Stable channel and the Extended channel is the same file, even though the URLs are different.
-
 ### LibreOffice
 
 `LibreOffice` uses the update host at `https://update.libreoffice.org/check.php` to determine the available update release. The Document Foundation does not immediately make the update host return the latest version at the time of release. In a scenario where the update host does not return the very latest version and the TDF has pulled the downloads for the same version returned from the update host, `LibreOffice` is unable to build valid download links.

@@ -1,14 +1,14 @@
 ---
 layout: doc
 ---
-# Instalar Desktop Workbench
+# Instalar Windows Workbench
 
 ::: warning Versión beta
-Desktop Workbench (EvergreenUI) está actualmente en versión preliminar. Instálelo con la marca `-AllowPrerelease`. Las características y los comandos pueden cambiar antes de la versión estable.
+Windows Workbench (EvergreenUI) está actualmente en versión preliminar. Instálelo con la marca `-AllowPrerelease`. Las características y los comandos pueden cambiar antes de la versión estable.
 :::
 
 ::: info
-Esta página describe las características y funciones de EvergreenUI a partir de la versión **1.0.21**.
+Esta página describe las características y funciones de EvergreenUI a partir de la versión **2.0.1-preview**.
 :::
 
 ## Requisitos
@@ -16,13 +16,27 @@ Esta página describe las características y funciones de EvergreenUI a partir d
 | Requisito | Versión mínima |
 |---|---|
 | Sistema operativo | Windows 10 / Windows Server 2019 o posterior |
-| PowerShell | 5.1 (Desktop) o 7.0+ |
-| .NET | .NET Framework 4.7.2+ (para PowerShell 5.1) o .NET 6+ (para PowerShell 7+) |
+| PowerShell | 7.6 o posterior (solo PowerShell Core) |
 | Módulo Evergreen | 2603.2832.0 o posterior |
 
 ::: info
-Desktop Workbench solo está disponible para Windows porque está basado en WPF. No se requieren DLL adicionales: la interfaz usa ensamblados WPF incluidos en Windows.
+Windows Workbench solo está disponible para Windows porque está basado en WPF. No se requieren DLL adicionales: la interfaz usa ensamblados WPF incluidos en Windows. No se admite Windows PowerShell 5.1.
 :::
+
+## Módulos opcionales
+
+El módulo Evergreen es la única dependencia necesaria. Estos módulos son opcionales y solo se comprueban al usar el flujo correspondiente. Workbench no los instala; consulte su estado en la [vista Acerca de](/es-es/workbench-desktop#about) o con `Get-EwDependency`.
+
+| Módulo | Necesario para |
+|---|---|
+| `IntuneWin32App` | Crear paquetes Win32 de Intune |
+| `Microsoft.Graph.Authentication` | Iniciar sesión en Microsoft Intune |
+| `Az.Accounts`, `Az.Resources`, `Az.Storage` | Detectar almacenamiento de Azure/Nerdio y publicar |
+
+```powershell
+Install-Module -Name IntuneWin32App, Microsoft.Graph.Authentication -Scope CurrentUser
+Install-Module -Name Az.Accounts, Az.Resources, Az.Storage -Scope CurrentUser
+```
 
 ## Instalar desde PowerShell Gallery
 
@@ -46,13 +60,13 @@ Update-Module -Name EvergreenUI -AllowPrerelease -Force
 
 ## Instalar desde el código fuente
 
-Para ejecutar Desktop Workbench desde una copia clonada del repositorio:
+Para ejecutar Windows Workbench desde una copia clonada del repositorio:
 
 ```powershell
-# Install the Evergreen dependency first
+# Instalar primero la dependencia de Evergreen
 Install-Module -Name Evergreen -Scope CurrentUser
 
-# Clone the repository and import the module directly
+# Clonar el repositorio e importar el módulo directamente
 git clone https://github.com/EUCPilots/evergreen-ui.git
 Import-Module ./evergreen-ui/EvergreenUI/EvergreenUI.psd1
 ```
@@ -64,3 +78,20 @@ Después de instalarlo, confirme que el módulo está disponible:
 ```powershell
 Get-Module -Name EvergreenUI -ListAvailable
 ```
+
+## Iniciar Workbench
+
+```powershell
+Import-Module EvergreenUI
+Start-EvergreenWorkbench
+```
+
+Consulte [Usar Windows Workbench](/es-es/workbench-desktop).
+
+## Ubicación de la configuración
+
+| Elemento | Ubicación |
+|---|---|
+| Configuración y estado guardado de la interfaz | `%APPDATA%\EvergreenWorkbench\settings.json` |
+| Registros de recuperación de Nerdio (sin secretos) | `%APPDATA%\EvergreenWorkbench\nerdio-recovery.json` |
+| Caché | `%LOCALAPPDATA%\EvergreenWorkbench\Cache` |

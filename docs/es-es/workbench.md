@@ -3,50 +3,60 @@ layout: doc
 ---
 # Acerca de Evergreen Workbench
 
-Evergreen Workbench es una interfaz gráfica para explorar los datos de versiones de aplicaciones del módulo de PowerShell [Evergreen](/es-es/about). Está disponible en dos ediciones: **Desktop Workbench** para Windows y **Web Workbench**, que se ejecuta en cualquier navegador moderno.
+Evergreen Workbench es una interfaz gráfica para explorar los datos de versiones de aplicaciones del módulo de PowerShell [Evergreen](/es-es/about). Está disponible en dos ediciones: **Windows Workbench** para Windows y **Web Workbench**, que se ejecuta en cualquier navegador moderno.
 
 ::: info
-Esta página describe las características y funciones de EvergreenUI a partir de la versión **1.0.21**.
+Esta página describe las características y funciones de EvergreenUI a partir de la versión **2.0.1-preview**.
 :::
 
-## Desktop frente a Web
+## Windows Workbench y Web Workbench
 
-| | Desktop Workbench | Web Workbench |
+| | Windows Workbench | Web Workbench |
 |---|---|---|
-| **Plataforma** | Windows (WPF) | Cualquier navegador moderno |
+| **Plataforma** | Windows (WPF, PowerShell 7.6+) | Cualquier navegador moderno |
 | **Instalación** | Módulo de PowerShell ([EvergreenUI](https://www.powershellgallery.com/packages/EvergreenUI/)) | No requiere instalación; está alojado en [eucpilots.com/workbench](https://eucpilots.com/workbench) |
 | **Explorar aplicaciones** | Sí | Sí |
 | **Buscar y filtrar** | Sí | Sí |
 | **Panel** | - | Sí |
 | **Descargar instaladores** | Sí | - |
 | **Administrar bibliotecas** | Sí | - |
-| **Instalar o actualizar aplicaciones** | Sí (versión preliminar) | - |
-| **Importar en Intune / Nerdio / Microsoft 365 Apps** | Sí (versión preliminar) | - |
+| **Definiciones e instalación local** | Sí (versión preliminar) | - |
+| **Publicar en Intune / Nerdio Manager** | Sí (versión preliminar) | - |
+| **Paquetes de Microsoft 365 Apps** | Sí (versión preliminar) | - |
+| **Comandos automatizables** | Sí (`Ew`) | - |
 | **Exportar a CSV** | Sí | Sí |
 | **Fuentes RSS** | - | Sí (por aplicación) |
 | **Instalación como PWA** | - | Sí |
 | **Tema** | Claro / Oscuro | Claro / Oscuro |
 
-## Desktop Workbench
+## Windows Workbench
 
 ::: warning Versión beta
-Desktop Workbench (EvergreenUI) está actualmente en versión preliminar. Las características y los comandos pueden cambiar antes de la versión estable.
+Windows Workbench (EvergreenUI) está actualmente en versión preliminar. Las características y los comandos pueden cambiar antes de la versión estable.
 :::
 
-Desktop Workbench es una interfaz gráfica basada en WPF, distribuida como el módulo de PowerShell `EvergreenUI`. Proporciona una interfaz de escritorio interactiva para los mismos cmdlets que ya usa (`Get-EvergreenApp`, `Save-EvergreenApp`, `Start-EvergreenLibraryUpdate`, etc.).
-
-![Vista Apps de Desktop Workbench](/img/ui/evergreen-workbench-apps.png)
+Windows Workbench es una interfaz gráfica basada en WPF, distribuida como el módulo de PowerShell `EvergreenUI`. Proporciona acceso interactivo a los mismos cmdlets que ya usa (`Get-EvergreenApp`, `Save-EvergreenApp`, `Update-EvergreenLibrary`, etc.).
 
 Características principales:
 
-- **Explorar y filtrar** todas las aplicaciones compatibles con Evergreen mediante paneles de filtros dinámicos
-- **Descargar** instaladores de aplicaciones con un administrador de descargas en cola
-- **Administrar bibliotecas**: crear, explorar y actualizar bibliotecas Evergreen en el disco
-- **Instalar y actualizar** aplicaciones directamente desde las definiciones de paquetes *(flujo de trabajo preliminar)*
-- **Importar** paquetes de aplicaciones en los flujos de trabajo de Microsoft Intune (aplicaciones Win32), Nerdio Manager (Shell Apps) y Microsoft 365 Apps *(flujos de trabajo preliminares)*
-- **Configuración** de rutas de descarga, temas, nivel de detalle del registro y configuración de proveedores
+- **Apps**: explorar y filtrar todas las aplicaciones Evergreen, elegir las columnas visibles y poner descargas en cola
+- **Biblioteca**: leer, actualizar y eliminar selectivamente aplicaciones o versiones
+- **Paquetes**: cargar y actualizar definiciones `App.json` y probar la instalación local
+- **Intune**: comparar definiciones con aplicaciones Win32 y crear y publicar paquetes
+- **Nerdio**: comparar Shell Apps, publicar aplicaciones y versiones y eliminar las versiones antiguas
+- **Microsoft 365 Apps**: crear y publicar paquetes de Office en Intune o Nerdio Manager
+- **Comandos sin interfaz**: las mismas funciones mediante comandos `Ew` automatizables
+- **Configuración y Acerca de**: carpetas guardadas, tema y estado de las dependencias
 
-Consulte [Instalar Desktop Workbench](/es-es/workbench-install) y [Usar Desktop Workbench](/es-es/workbench-desktop) para obtener todos los detalles.
+Más información:
+
+- [Instalar Windows Workbench](/es-es/workbench-install)
+- [Usar Windows Workbench](/es-es/workbench-desktop)
+- [Paquetes, definiciones e instalación local](/es-es/workbench-packages)
+- [Publicar en Microsoft Intune](/es-es/workbench-intune)
+- [Publicar en Nerdio Manager](/es-es/workbench-nerdio)
+- [Paquetes de Microsoft 365 Apps](/es-es/workbench-m365)
+- [Referencia de comandos de Windows Workbench](/es-es/workbench-commands)
 
 ## Web Workbench
 

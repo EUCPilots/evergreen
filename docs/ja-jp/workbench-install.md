@@ -1,14 +1,14 @@
 ---
 layout: doc
 ---
-# Desktop Workbench のインストール
+# Windows Workbench のインストール
 
 ::: warning ベータ
-Desktop Workbench (EvergreenUI) は現在プレリリースです。`-AllowPrerelease` フラグを指定してインストールしてください。安定版リリースまでに機能やコマンドが変更される可能性があります。
+Windows Workbench (EvergreenUI) は現在プレリリースです。`-AllowPrerelease` フラグを指定してインストールしてください。安定版リリースまでに機能やコマンドが変更される可能性があります。
 :::
 
 ::: info
-このページでは、バージョン **1.0.21** 以降の EvergreenUI の機能について説明します。
+このページでは、バージョン **2.0.1-preview** 以降の EvergreenUI の機能について説明します。
 :::
 
 ## 要件
@@ -16,13 +16,27 @@ Desktop Workbench (EvergreenUI) は現在プレリリースです。`-AllowPrere
 | 要件 | 最小バージョン |
 |---|---|
 | オペレーティング システム | Windows 10 / Windows Server 2019 以降 |
-| PowerShell | 5.1（Desktop）または 7.0 以降 |
-| .NET | .NET Framework 4.7.2 以降（PowerShell 5.1 の場合）または .NET 6 以降（PowerShell 7 以降の場合） |
+| PowerShell | 7.6 以降（PowerShell Core のみ） |
 | Evergreen モジュール | 2603.2832.0 以降 |
 
 ::: info
-Desktop Workbench は WPF 上に構築されているため、Windows 専用です。追加の DLL は不要です。UI は Windows に付属する WPF アセンブリを使用します。
+Windows Workbench は WPF 上に構築されているため、Windows 専用です。追加の DLL は不要です。UI は Windows に付属する WPF アセンブリを使用します。Windows PowerShell 5.1 はサポートされません。
 :::
+
+## オプション モジュール
+
+Evergreen モジュールが唯一の必須依存関係です。次のモジュールはオプションで、対応するワークフローを使用した場合にのみ確認されます。Workbench はこれらをインストールしません。[バージョン情報ビュー](/ja-jp/workbench-desktop#about)または `Get-EwDependency` で状態を確認してください。
+
+| モジュール | 用途 |
+|---|---|
+| `IntuneWin32App` | Intune Win32 パッケージのビルド |
+| `Microsoft.Graph.Authentication` | Microsoft Intune へのサインイン |
+| `Az.Accounts`、`Az.Resources`、`Az.Storage` | Azure/Nerdio ストレージの検出と公開 |
+
+```powershell
+Install-Module -Name IntuneWin32App, Microsoft.Graph.Authentication -Scope CurrentUser
+Install-Module -Name Az.Accounts, Az.Resources, Az.Storage -Scope CurrentUser
+```
 
 ## PowerShell Gallery からインストールする
 
@@ -46,13 +60,13 @@ Update-Module -Name EvergreenUI -AllowPrerelease -Force
 
 ## ソースからインストールする
 
-複製したリポジトリから Desktop Workbench を実行するには、次のようにします。
+複製したリポジトリから Windows Workbench を実行するには、次のようにします。
 
 ```powershell
-# Install the Evergreen dependency first
+# 先に Evergreen 依存関係をインストールする
 Install-Module -Name Evergreen -Scope CurrentUser
 
-# Clone the repository and import the module directly
+# リポジトリを複製してモジュールを直接インポートする
 git clone https://github.com/EUCPilots/evergreen-ui.git
 Import-Module ./evergreen-ui/EvergreenUI/EvergreenUI.psd1
 ```
@@ -64,3 +78,20 @@ Import-Module ./evergreen-ui/EvergreenUI/EvergreenUI.psd1
 ```powershell
 Get-Module -Name EvergreenUI -ListAvailable
 ```
+
+## Workbench を起動する
+
+```powershell
+Import-Module EvergreenUI
+Start-EvergreenWorkbench
+```
+
+[Windows Workbench の使い方](/ja-jp/workbench-desktop)を参照してください。
+
+## 設定の保存場所
+
+| 項目 | 場所 |
+|---|---|
+| 設定と保存された UI 状態 | `%APPDATA%\EvergreenWorkbench\settings.json` |
+| Nerdio 復旧レコード（シークレットなし） | `%APPDATA%\EvergreenWorkbench\nerdio-recovery.json` |
+| キャッシュ | `%LOCALAPPDATA%\EvergreenWorkbench\Cache` |

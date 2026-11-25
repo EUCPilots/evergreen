@@ -3,50 +3,60 @@ layout: doc
 ---
 # Evergreen Workbench について
 
-Evergreen Workbench は、[Evergreen](/ja-jp/about) PowerShell モジュールが追跡するアプリケーション バージョン データを調べるためのグラフィカル インターフェイスです。Windows 向けの **Desktop Workbench** と、最新のブラウザーで動作する **Web Workbench** の 2 つのエディションがあります。
+Evergreen Workbench は、[Evergreen](/ja-jp/about) PowerShell モジュールが追跡するアプリケーション バージョン データを調べるためのグラフィカル インターフェイスです。Windows 向けの **Windows Workbench** と、最新のブラウザーで動作する **Web Workbench** の 2 つのエディションがあります。
 
 ::: info
-このページでは、バージョン **1.0.21** 以降の EvergreenUI の機能について説明します。
+このページでは、バージョン **2.0.1-preview** 以降の EvergreenUI の機能について説明します。
 :::
 
-## Desktop 版と Web 版の比較
+## Windows Workbench と Web Workbench
 
-| | Desktop Workbench | Web Workbench |
+| | Windows Workbench | Web Workbench |
 |---|---|---|
-| **プラットフォーム** | Windows (WPF) | 最新のブラウザー |
+| **プラットフォーム** | Windows (WPF、PowerShell 7.6+) | 最新のブラウザー |
 | **インストール** | PowerShell モジュール ([EvergreenUI](https://www.powershellgallery.com/packages/EvergreenUI/)) | インストール不要 - [eucpilots.com/workbench](https://eucpilots.com/workbench) でホスト |
 | **アプリの閲覧** | はい | はい |
 | **検索と絞り込み** | はい | はい |
 | **ダッシュボード** | - | はい |
 | **インストーラーのダウンロード** | はい | - |
 | **ライブラリ管理** | はい | - |
-| **アプリのインストール / 更新** | はい（プレリリース） | - |
-| **Intune / Nerdio / Microsoft 365 Apps へのインポート** | はい（プレリリース） | - |
+| **定義とローカル インストール** | はい（プレリリース） | - |
+| **Intune / Nerdio Manager への公開** | はい（プレリリース） | - |
+| **Microsoft 365 Apps パッケージ** | はい（プレリリース） | - |
+| **スクリプト可能なコマンド** | はい（`Ew`） | - |
 | **CSV へのエクスポート** | はい | はい |
 | **RSS フィード** | - | はい（アプリごと） |
 | **PWA としてインストール** | - | はい |
 | **テーマ** | ライト / ダーク | ライト / ダーク |
 
-## Desktop Workbench
+## Windows Workbench
 
 ::: warning ベータ
-Desktop Workbench (EvergreenUI) は現在プレリリースです。安定版リリースまでに機能やコマンドが変更される可能性があります。
+Windows Workbench (EvergreenUI) は現在プレリリースです。安定版リリースまでに機能やコマンドが変更される可能性があります。
 :::
 
-Desktop Workbench は WPF ベースのグラフィカル フロントエンドで、`EvergreenUI` PowerShell モジュールとして提供されます。すでに使用しているコマンドレット（`Get-EvergreenApp`、`Save-EvergreenApp`、`Start-EvergreenLibraryUpdate` など）を、対話型の Windows デスクトップ インターフェイスから利用できます。
-
-![Desktop Workbench のアプリ ビュー](/img/ui/evergreen-workbench-apps.png)
+Windows Workbench は WPF ベースのグラフィカル フロントエンドで、`EvergreenUI` PowerShell モジュールとして提供されます。既存のコマンドレット（`Get-EvergreenApp`、`Save-EvergreenApp`、`Update-EvergreenLibrary` など）を対話型の Windows インターフェイスで利用できます。
 
 主な機能:
 
-- **閲覧と絞り込み** - 動的なフィルター パネルで Evergreen がサポートするすべてのアプリケーションを表示
-- **ダウンロード** - キュー形式のダウンロード マネージャーでアプリケーション インストーラーをダウンロード
-- **ライブラリ管理** - Evergreen ライブラリの作成、閲覧、ディスク上での更新
-- **インストールと更新** - パッケージ定義からアプリケーションを直接インストールおよび更新（*プレリリース ワークフロー*）
-- **インポート** - アプリケーション パッケージを Microsoft Intune（Win32 アプリ）、Nerdio Manager（Shell Apps）、Microsoft 365 Apps のワークフローにインポート（*プレリリース ワークフロー*）
-- **設定** - ダウンロード パス、テーマ、ログの詳細度、プロバイダー構成
+- **Apps** - Evergreen のすべてのアプリを閲覧・絞り込み、表示列を選択し、ダウンロードをキューに登録
+- **Library** - ローカル Evergreen ライブラリのアプリやバージョンを読み取り、更新、選択削除
+- **Packages** - `App.json` 定義を読み込み・更新し、ローカル インストールをテスト
+- **Intune** - 定義を Win32 アプリと比較し、パッケージをビルド・公開
+- **Nerdio** - Shell App を比較し、アプリとバージョンを公開し、古いバージョンを削除
+- **Microsoft 365 Apps** - Office パッケージを Intune または Nerdio Manager にビルド・公開
+- **ヘッドレス コマンド** - スクリプト可能な `Ew` コマンドで同じ機能を利用
+- **設定とバージョン情報** - 保存フォルダー、テーマ、依存関係の状態
 
-詳細は[Desktop Workbench のインストール](/ja-jp/workbench-install)および[Desktop Workbench の使い方](/ja-jp/workbench-desktop)を参照してください。
+詳細:
+
+- [Windows Workbench のインストール](/ja-jp/workbench-install)
+- [Windows Workbench の使い方](/ja-jp/workbench-desktop)
+- [パッケージ、定義、ローカル インストール](/ja-jp/workbench-packages)
+- [Microsoft Intune への公開](/ja-jp/workbench-intune)
+- [Nerdio Manager への公開](/ja-jp/workbench-nerdio)
+- [Microsoft 365 Apps パッケージ](/ja-jp/workbench-m365)
+- [Windows Workbench コマンド リファレンス](/ja-jp/workbench-commands)
 
 ## Web Workbench
 

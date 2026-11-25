@@ -1,275 +1,167 @@
 ---
 layout: doc
 ---
-# Desktop Workbench verwenden
+# Windows Workbench verwenden
 
-::: warning Beta
-Die Desktop Workbench (EvergreenUI) befindet sich derzeit in der Vorabversion. Features und Befehle können sich vor der stabilen Veröffentlichung ändern.
+::: warning Vorabversion
+Windows Workbench (EvergreenUI) befindet sich derzeit in der Vorabversion. Funktionen und Befehle können sich vor der stabilen Veröffentlichung ändern.
 :::
 
 ::: info
-Diese Seite beschreibt die Funktionen und Features von EvergreenUI ab Version **1.0.21**.
+Diese Seite beschreibt die Funktionen von EvergreenUI ab Version **2.0.1-preview**.
 :::
 
 ## Workbench starten
 
-Importieren Sie das Modul und führen Sie `Start-EvergreenWorkbench` aus, um das Fenster der Evergreen Workbench zu öffnen:
+Importieren Sie das Modul und führen Sie `Start-EvergreenWorkbench` aus, um das Workbench-Fenster zu öffnen:
 
 ```powershell
 Import-Module EvergreenUI
 Start-EvergreenWorkbench
 ```
 
-Beim erneuten Öffnen stellt die Workbench die zuletzt verwendete Ansicht wieder her. Wenn die gespeicherte Ansicht deaktiviert ist, wird stattdessen die Apps-Ansicht angezeigt.
+`Start-EvergreenWorkbench` lädt WPF bei Bedarf. Wird Ihre PowerShell-Sitzung nicht im Single-Threaded Apartment (STA) ausgeführt, hostet Workbench das Fenster in einem dedizierten STA-Runspace. Besondere Startparameter sind daher nicht erforderlich. Workbench ist nur unter Windows verfügbar und erfordert PowerShell 7.6 oder höher.
 
-Verwenden Sie den Umschalter der Navigationsleiste, um zwischen der erweiterten und kompakten Navigation zu wechseln.
+Beim Start stellt Workbench Fenstergröße und Maximierungsstatus, die zuletzt angezeigte Seite und ausgewählte Anwendung sowie die Breite der Anwendungsliste und Höhe der Downloadwarteschlange wieder her. Standardmäßig wird das helle oder dunkle Windows-Design verwendet; auf unterstützten Systemen kommt Mica hinzu. Transparenz- und Kontrasteinstellungen von Windows können einen undurchsichtigen Hintergrund bewirken.
 
-![Apps-Ansicht mit Microsoft-Anwendungen sowie Filtern für Kanal, Release, Architektur und Typ](/img/ui/evergreen-workbench-collapsed.png)
+## Navigation
 
-## Apps-Ansicht
+Über die Navigationsleiste links wechseln Sie zwischen den Ansichten. Mit dem Schalter oben in der Leiste wechseln Sie zwischen erweiterter und kompakter (nur Symbole) Navigation.
 
-Die Apps-Ansicht zeigt alle über 500 vom Evergreen-Modul unterstützten Anwendungen in einem durchsuchbaren Datengitter an. Wählen Sie eine Anwendung aus der Liste links aus, um die von `Get-EvergreenApp` zurückgegebenen Versions- und Downloadmetadaten anzuzeigen.
-
-![Apps-Ansicht mit Microsoft-Anwendungen sowie Filtern für Kanal, Release, Architektur und Typ](/img/ui/evergreen-workbench-apps.png)
-
-Verwenden Sie das Suchfeld oben in der Anwendungsliste, um nach Namen zu filtern. Das Datengitter rechts zeigt Versionsdetails wie Version, Datum, Kanal, Release, Architektur, Typ und URI an.
-
-Sie können häufig verwendete Anwendungen in der Liste links mit einem Stern markieren. Favoriten werden oben in der Liste angeheftet und in den lokalen Workbench-Einstellungen gespeichert.
-
-Wenn für die ausgewählte App zwischengespeicherte Daten vorhanden sind, zeigt der Detailkopf außerdem einen Zeitstempel der **letzten Aktualisierung** an. Die folgende Apps-Ansicht zeigt Favoriten, die mit Sternsymbolen oben angeheftet sind, sowie den Detailkopf mit dem Zeitstempel der letzten Aktualisierung.
-
-![Apps-Ansicht mit Microsoft-Anwendungen sowie Filtern für Kanal, Release, Architektur und Typ](/img/ui/evergreen-workbench-collapsed.png)
-
-### Dynamische Filter
-
-Wenn Sie eine Anwendung auswählen, wird der Filterbereich automatisch anhand der von dieser Anwendung zurückgegebenen Eigenschaften aktualisiert. Wenn Sie beispielsweise Adobe Acrobat Reader DC auswählen, werden Filter für Sprache, Architektur und Typ angezeigt.
-
-![Dynamische Filter für Adobe Acrobat Reader DC mit Steuerelementen für Sprache, Architektur und Typ](/img/ui/evergreen-workbench-apps-filter.png)
-
-Die verfügbaren Filtereigenschaften variieren je nach Anwendung und können Folgendes umfassen:
-
-| Eigenschaft | Beispielwerte |
+| Ansicht | Zweck |
 |---|---|
-| Architecture | x64, x86, ARM64 |
-| Channel | Stable, Beta, Dev |
-| Ring | Production, Enterprise |
-| Language | English, English (UK) |
-| Type | exe, msi, msix, zip |
-| Release | General, Enterprise |
+| **Apps** | Anwendungen durchsuchen, Versionen untersuchen und filtern, Installer in die Warteschlange stellen und herunterladen sowie Evergreen-Daten verwalten |
+| **Library** | Inhalte einer lokalen Evergreen-Bibliothek lesen, aktualisieren und entfernen |
+| **Packages** | App.json-Definitionen verwalten und lokale Installationen testen |
+| **Intune** | Win32- und Microsoft-365-Apps in Microsoft Intune vergleichen, erstellen und veröffentlichen |
+| **Nerdio** | Shell Apps und Microsoft-365-Apps in Nerdio Manager vergleichen und veröffentlichen |
+| **Settings** | Gespeicherte Ordner und Darstellung |
+| **About** | Workbench-Metadaten und Abhängigkeitsstatus |
 
-Wählen Sie im Filterbereich Werte aus, um die Ergebnisse einzugrenzen. Verwenden Sie **Filter löschen**, um die Filter zurückzusetzen, oder **Als CSV exportieren**, um die gefilterten Ergebnisse zu speichern.
+Das **Aktivitätsprotokoll** am unteren Fensterrand erfasst zeitgestempelte Info-, Warning- und Error-Meldungen aus allen Ansichten. Ziehen Sie den Griff (oder verwenden Sie die Pfeiltasten nach oben und unten), um die Größe zu ändern. Bei Bedarf können Sie das Protokoll einklappen. Längere Vorgänge laufen in einem gemeinsamen Pool mit bis zu vier Hintergrund-Workern, damit das Fenster reaktionsfähig bleibt. Während eines Vorgangs werden widersprüchliche Aktionen deaktiviert; während Workbench Wartungsänderungen schreibt, kann das Fenster nicht geschlossen werden.
 
-Das Versionsgitter unterstützt das Sortieren nach Spalten. Klicken Sie auf eine Spaltenüberschrift, um aufsteigend zu sortieren, und klicken Sie erneut, um absteigend zu sortieren.
+## Apps
 
-Sie können auch mit der rechten Maustaste auf eine Spaltenüberschrift klicken, um optionale Spalten ein- oder auszublenden. Strukturelle Spalten wie Version und URI bleiben sichtbar.
+Die Apps-Ansicht listet alle Anwendungen im Evergreen-Katalog auf. Wählen Sie eine Anwendung aus, um ihre Versionen mit `Get-EvergreenApp` aufzulösen und in der Tabelle anzuzeigen.
 
-![Apps-Ansicht mit den Optionen nach einem Rechtsklick auf den Tabellenkopf](/img/ui/evergreen-workbench-rightclick.png)
+- **Search** - Anwendungsliste nach Namen filtern.
+- **Favourites** - Klicken Sie auf den Stern, um eine Anwendung oben in der Liste anzuheften. Favoriten werden in den Workbench-Einstellungen gespeichert.
+- **Resize** - Ziehen Sie den Teiler, um die Breite der Anwendungsliste zu ändern. Die Breite wird gespeichert.
 
-## Downloadansicht
+### Versionen filtern
 
-Um Anwendungsinstaller herunterzuladen, wählen Sie Versionen in der Apps-Ansicht aus und klicken Sie auf **Zur Downloadwarteschlange hinzufügen**. Wechseln Sie zur Downloadansicht, um Downloads zu verwalten und zu starten.
+Der Filterbereich passt sich an die Eigenschaften der ausgewählten Anwendung an, etwa Architecture, Channel, Language, Type oder Release. Jeder Filter ist eine Mehrfachauswahlliste:
 
-![Downloadansicht mit einem Download von Adobe Acrobat Reader DC in der Warteschlange](/img/ui/evergreen-workbench-download.png)
+- Werte innerhalb einer Eigenschaft werden mit **OR** kombiniert.
+- Verschiedene Eigenschaften werden mit **AND** kombiniert.
+- Ohne Auswahl gilt **All**.
 
-Die Downloadansicht zeigt die Warteschlange mit den Spalten Status, App, Version, Architektur, URI und Pfad. Die Spalte Pfad wird nach Abschluss eines Downloads ausgefüllt. Verwenden Sie die Symbolleiste, um:
+### Versionentabelle
 
-- **Ausgewählte entfernen** – Elemente aus der Warteschlange entfernen
-- **Warteschlange leeren** – alle Elemente entfernen
-- **Ordner öffnen** – den Download-Ausgabeordner öffnen
-- **Alle herunterladen** – alle Elemente in der Warteschlange nacheinander herunterladen
+Die Tabelle zeigt alle Eigenschaften der ausgewählten Anwendung, auch Eigenschaften, die nur in manchen Zeilen vorkommen. Übliche Spalten wie Version, Date, Channel und Architecture stehen zuerst, danach folgen anwendungsspezifische Eigenschaften; **URI** steht zuletzt. Fehlende Werte bleiben leer.
 
-Ein Fortschrittsbalken unten zeigt den aktuellen Download an. Downloads werden nacheinander und in der Reihenfolge der Warteschlange verarbeitet. Das Gitter der Downloadwarteschlange unterstützt die Sortierung nach Spalten.
+- Klicken Sie auf eine Spaltenüberschrift, um aufsteigend und erneut, um absteigend zu sortieren.
+- **Columns** blendet optionale Spalten ein oder aus. **Version** und **URI** können nicht ausgeblendet werden. Die Auswahl gilt für alle Anwendungen und wird gespeichert.
+- **Export to CSV** speichert die gefilterten Zeilen und sichtbaren Spalten in der aktuellen Reihenfolge.
+- Per Rechtsklick auf eine Zeile können Sie **Copy URI** oder **Open URI** auswählen.
 
-![Downloadansicht mit den lokalen Pfaden der heruntergeladenen Dateien](/img/ui/evergreen-workbench-download-path.png)
+### Installer herunterladen
 
-## Bibliotheksansicht
+Wählen Sie eine oder mehrere Zeilen aus und klicken Sie auf **Add to queue**. Die Warteschlange gilt anwendungsübergreifend, sodass Sie Downloads für mehrere Anwendungen bündeln können. Mit **Show queue** wird die Warteschlange eingeblendet. Ziehen Sie den Griff, um ihre Größe anzupassen.
 
-Wenn Sie bereits über eine [Evergreen-Bibliothek](/de-de/newlibrary) verfügen, bietet die Bibliotheksansicht eine grafische Oberfläche zum Durchsuchen und Aktualisieren. Geben Sie den Bibliothekspfad ein oder navigieren Sie dorthin, um den Inhalt der Bibliothek zu laden.
+Jede Zeile zeigt Anwendung, Version, Architecture, Status, URI und nach dem Download die **Saved file**. Über die Zeilenaktionen können Sie ein Element herunterladen oder entfernen.
 
-![Bibliotheksansicht mit dem Bibliotheksinhalt und Versionsdetails für Microsoft Edge](/img/ui/evergreen-workbench-library.png)
+| Aktion | Ergebnis |
+|---|---|
+| **Download now** | Elemente in der Warteschlange in den Downloadordner herunterladen |
+| **Clear completed** | Heruntergeladene und fehlgeschlagene Zeilen entfernen |
+| **Clear queue** | Alle Zeilen entfernen (während eines Downloads nicht verfügbar) |
+| **Open folder** | Den Ordner mit einer heruntergeladenen Datei öffnen |
+| **Change** | Downloadordner ändern |
 
-Die Bibliotheksansicht zeigt Folgendes an:
+Der Downloadordner wird in den Einstellungen gespeichert und neben der Warteschlange angezeigt. Ein Fortschrittsbalken zeigt den aktiven Download an.
 
-- **Bibliotheksinhalt** – eine Tabelle der Anwendungen in der Bibliothek mit App-Name, Versionsanzahl und Pfad
-- **Details der ausgewählten App** – Version, URI, Typ, Größe, SHA256-Hash, Release und Dateipfad für jede Version der ausgewählten Anwendung
+### Wartung
 
-Verwenden Sie die Symbolleiste, um:
+Das Menü **Actions...** der Apps-Ansicht enthält Wartungsaufgaben:
 
-- **Durchsuchen** – einen Bibliothekspfad auswählen
-- **Ordner öffnen** – das Bibliotheksverzeichnis öffnen
-- **Neue Bibliothek** – eine neue Evergreen-Bibliothek erstellen (`New-EvergreenLibrary`)
-- **Bibliothek neu laden** – den Bibliotheksinhalt erneut laden (`Get-EvergreenLibrary`)
-- **Bibliothek aktualisieren** – die neuesten Versionen in die Bibliothek herunterladen (`Start-EvergreenLibraryUpdate`)
+| Aktion | Funktion |
+|---|---|
+| **Refresh** | Anwendungskatalog neu laden |
+| **Reload selected app versions** | Cache für die ausgewählte Anwendung umgehen |
+| **Update Evergreen** | Evergreen-Anwendungsdaten aktualisieren (`Update-Evergreen`). Das installierte PowerShell-Modul wird dabei nicht aktualisiert |
+| **Clear Workbench cache** | Nach Bestätigung den Katalog- und Versionscache unter `%LOCALAPPDATA%\EvergreenWorkbench\Cache` löschen |
+| **Open cache folder** | Cacheordner öffnen und bei Bedarf erstellen |
 
-## Installationsansicht
+Ergebnisse von `Get-EvergreenApp` werden 24 Stunden lang als JSON-Datei pro Anwendung zwischengespeichert. Das Leeren des Caches entfernt keine Evergreen-Anwendungsdaten, heruntergeladenen Installer, Library-Inhalte, Einstellungen oder Provider-Wiederherstellungsdatensätze. Die Wartung läuft im Hintergrund, aktualisiert anschließend Apps und behält dabei Auswahl, Suche, Filter und Downloads in der Warteschlange bei. Teilfehler werden gemeldet und nicht automatisch erneut versucht.
 
-Die Installationsansicht lädt Paketdefinitionen aus einem Verzeichnis, vergleicht die definierten Anwendungsversionen mit den aktuell auf dem Computer installierten Versionen und ermöglicht die direkte Installation oder Aktualisierung von Anwendungen.
+## Library
 
-![Installationsansicht mit einem Vergleich der installierten und neuesten Anwendungsversionen](/img/ui/evergreen-workbench-install.png)
+Die Library-Ansicht liest und verwaltet eine initialisierte [Evergreen-Bibliothek](/de-de/newlibrary).
 
-Jede Zeile zeigt Folgendes an:
+- **Library location** - Dropdown mit den zehn zuletzt gespeicherten Bibliotheksordnern sowie **Browse** und **Save path**. Der Ordner muss `EvergreenLibrary.json` enthalten.
+- **Load** - Bibliotheksinventar lesen.
+- **Update library** - neueste Versionen aller Bibliotheksanwendungen herunterladen (`Update-EvergreenLibrary`).
+- **Open folder** - Bibliotheksordner im Datei-Explorer öffnen.
 
-- **App** – Anwendungsname und Architektur
-- **Herausgeber** – Herausgeber der Anwendung
-- **Installiert** – die derzeit auf dem Computer installierte Version (falls vorhanden)
-- **Neueste Version** – die neueste über Evergreen verfügbare Version
-- **Status** – gibt an, ob die App installiert und aktuell ist, installiert und aktualisierungsbedürftig ist, installiert und noch nicht auf die neueste Version geprüft wurde oder nicht installiert ist
-- **Aktion** – verfügbare Aktion: Installieren, Aktualisieren oder keine
+Die obere Tabelle listet jede Anwendung mit der Anzahl ihrer **Versions** und dem **Location** auf. Die untere Tabelle zeigt Versionen der ausgewählten Anwendung mit Version, Architecture, Type, lokalem Installer-**Location** (darauf zeigen, um den vollständigen Pfad zu sehen) und URI. Öffnen Sie per Rechtsklick auf eine der Tabellen den Anwendungs- oder Installerordner mit **Open folder**.
 
-Verwenden Sie die Symbolleiste, um:
+### Inhalte entfernen
 
-- **Durchsuchen** – das Verzeichnis mit den Paketdefinitionen auswählen
-- **Definitionen laden** – die Paketdefinitionsdateien laden oder erneut laden
-- **Neueste Versionen suchen** – die neueste Version jeder definierten Anwendung über Evergreen abfragen
-- **Ausgewählte installieren** – die ausgewählten Anwendungen installieren oder aktualisieren
+Das Entfernen ist unabhängig vom Evergreen-Aufbewahrungsbefehl:
 
-::: info
-Wenn die Workbench nicht mit erhöhten Rechten ausgeführt wird, fordern Installer möglicherweise eine UAC-Erhöhung an.
+- **Remove application** entfernt die ausgewählte Anwendung, ihre registrierten Installer und den Bibliothekseintrag. Spätere Bibliotheksaktualisierungen laden sie nicht erneut herunter.
+- **Remove versions** entfernt nur die ausgewählten Zeilen in der Versionentabelle. Mit **Ctrl** oder **Shift** können mehrere Zeilen ausgewählt werden. Andere Architekturen oder Installer-Typen mit derselben Versionsnummer bleiben unberührt.
+
+Für jede Aktion ist eine Bestätigung erforderlich; **Cancel** ist die Standardauswahl. Entfernt werden nur registrierte Installerdateien im Anwendungsordner. Dateien, auf die der beibehaltene Bestand verweist, bleiben erhalten; nicht registrierte Dateien werden nicht verändert. Unsichere Pfade oder ein seit dem Laden geändertes Manifest brechen den Vorgang ab. Bei Fehlern werden weitere Schritte angehalten, Teiländerungen gemeldet und das Inventar neu geladen. Destruktive Vorgänge werden nie automatisch wiederholt.
+
+::: warning
+Das Entfernen kann nicht rückgängig gemacht werden. Wird der Vorgang vor dem Schreiben des Manifests abgebrochen, können Zeilen weiterhin aufgeführt sein, obwohl Installerdateien bereits entfernt wurden. Prüfen Sie die gemeldeten Pfade.
 :::
 
-## Register „Import“
+## Packages
 
-Das Register „Import“ bietet Workflows zum Importieren von Anwendungspaketen in externe Plattformen. Es enthält vier Unterregister: **Microsoft Intune Win32-Apps**, **Nerdio Manager Shell Apps**, **Microsoft 365 Apps** und **Authentifizierung**.
+Die Packages-Ansicht enthält die beiden Registerkarten **Definitions** und **Install**. Weitere Informationen finden Sie unter [Pakete, Definitionen und lokale Installation](/de-de/workbench-packages).
 
-Module für Importvorgänge werden beim ersten Öffnen des Registers „Import“ geladen. Bis alle erforderlichen Module geladen sind, bleiben Anmelde- und Importaktionen deaktiviert.
+## Intune
 
-### Microsoft Intune Win32-Apps
+Die Intune-Ansicht vergleicht Ihre App.json-Definitionen mit Win32-Apps in Microsoft Intune, erstellt und veröffentlicht Pakete und verwaltet Supersedence. Außerdem enthält sie den Microsoft-365-Apps-Workflow für Intune. Siehe [Veröffentlichung in Microsoft Intune](/de-de/workbench-intune).
 
-::: warning Überprüfung empfohlen
-Import-Workflows sind verfügbar. Paketierungs- und Zuweisungsverhalten, die für Ihren Mandanten spezifisch sind, sollten jedoch vor der Bereitstellung in der Produktion in Ihrer Umgebung überprüft werden.
-:::
+## Nerdio
 
-Navigieren Sie zu einem Verzeichnis mit Intune-Paketdefinitionen, laden Sie diese und vergleichen Sie sie mit den Win32-Apps in Ihrem Intune-Mandanten.
+Die Nerdio-Ansicht verbindet sich mit Azure und der Nerdio-Manager-API, vergleicht Shell-App-Definitionen, veröffentlicht Apps und Versionen und entfernt alte Versionen. Sie enthält auch den Microsoft-365-Apps-Workflow für Nerdio. Siehe [Veröffentlichung in Nerdio Manager](/de-de/workbench-nerdio) und [Microsoft 365 Apps-Pakete](/de-de/workbench-m365).
 
-![Register „Import“ mit Microsoft-Intune-Win32-Apps, Paketdefinitionen und Importstatus](/img/ui/evergreen-workbench-import-intune.png)
+## Settings
 
-Das Datengitter zeigt Abgleichszeilen mit folgenden Spalten: App, Herausgeber, Intune-Version, Neueste Version, Status und Aktion.
+Die Settings-Ansicht zeigt für jeden Workflow gespeicherte Ordner und Optionen für das Erscheinungsbild.
 
-Die Aktionswerte geben an, was als Nächstes zu tun ist:
+**Gespeicherte Ordner**
 
-- **Neue App importieren** – die Definition ist noch nicht in Intune vorhanden
-- **Neue Version importieren und ersetzen** – die App ist in Intune vorhanden und muss aktualisiert werden
-- **Definition korrigieren** – doppelte Definitions-GUID oder ein anderes Definitionsproblem
-- **–** – keine Aktion erforderlich
+| Ordner | Verwendet von |
+|---|---|
+| **Download folder** | Apps-Downloads |
+| **Library folder** | Library |
+| **Packages definitions folder** | Packages und Intune |
+| **Package output folder** | Intune-Paketerstellung |
+| **Microsoft 365 Apps configurations folder** | Microsoft 365 Apps in Intune und Nerdio (gemeinsam) |
+| **Nerdio Manager Shell Apps directory** | Nerdio Shell Apps |
 
-Verwenden Sie die Aktionsleiste, um Definitionen zu verwalten und zu importieren:
+Speichern Sie mit **Browse** einen Ordner oder verwenden Sie die Steuerelemente im jeweiligen Workflow. Wenn Sie in Settings einen der drei Workflowordner ändern, wird eine nicht gespeicherte Ordneränderung im jeweiligen Workflow ersetzt. **Open folder** ist nur verfügbar, wenn auf den Ordner zugegriffen werden kann.
 
-- **Definitionen neu laden** – die Definitionsliste vom Datenträger neu laden
-- **Definitionen aktualisieren** – die neueste Evergreen-Version für jede Definition ermitteln und `App.json` sowie Erkennungsregeln direkt aktualisieren; nach Abschluss wird die Definitionsliste automatisch neu geladen
-- **Mit Microsoft Intune vergleichen** – die Abgleichsliste erstellen
-- **Win32-App importieren** – die ausgewählten Zeilen mit Aktionen verarbeiten
+**Darstellung**
 
-### Nerdio Manager Shell Apps
+- **Color theme** - wählen Sie **System**, **Light** oder **Dark**.
 
-::: warning Überprüfung empfohlen
-Nerdio-Import-Workflows sind verfügbar. Überprüfen Sie jedoch die API-Berechtigungen, Definitionszuordnungen und das Verhalten nach dem Import in Ihrer Umgebung.
-:::
+Die Azure- und API-Konfiguration für Nerdio befindet sich in der Nerdio-Ansicht auf der Registerkarte Settings.
 
-Navigieren Sie zu einem Verzeichnis mit Nerdio-Manager-Shell-App-Definitionen, laden Sie diese und vergleichen Sie sie mit den Shell Apps in Ihrer Nerdio-Manager-Umgebung.
+Einstellungen und gespeicherter Oberflächenstatus befinden sich in `%APPDATA%\EvergreenWorkbench\settings.json`. Authentifizierungstoken und Clientgeheimnisse werden nur im Arbeitsspeicher gehalten und nie in den Einstellungen gespeichert.
 
-![Register „Import“ mit Nerdio Manager Shell Apps und Versionsvergleich](/img/ui/evergreen-workbench-import-nerdio.png)
+## About
 
-Das Datengitter zeigt den Status jeder Definition an: ob sie einer vorhandenen Shell App zugeordnet ist, ob ein Update verfügbar ist sowie die aktuelle und neueste Evergreen-Version. Die Statusleiste fasst die Vergleichsergebnisse zusammen.
+Die About-Ansicht zeigt Workbench-Metadaten (Name, Version, Vorabversionskennzeichnung, Projekt-URI und Beschreibung) sowie eine **Dependencies**-Tabelle. Diese enthält den Zweck jedes Moduls, die Mindestversion, die höchste lokal auffindbare **Installed**-Version und die Version **Loaded (window)** im Workbench-Runspace. Geladene Versionen können von Ihrer aufrufenden Sitzung oder einem Hintergrundjob abweichen.
 
-Verwenden Sie **Mit Nerdio Manager vergleichen**, um die Abgleichsliste zu erstellen. Wählen Sie anschließend für die gewünschte Zeile **Neue Version zu vorhandener Shell App hinzufügen** oder **Neue App importieren**.
+Der Status wird beim Öffnen von About und auf Anforderung aktualisiert. Optionale Abhängigkeiten werden weder installiert noch aktualisiert oder importiert. Schlägt eine Aktualisierung fehl, bleiben die bisherigen Ergebnisse sichtbar und werden als veraltet markiert.
 
-### Microsoft 365 Apps
+## Befehle ohne Fenster verwenden
 
-::: warning Überprüfung empfohlen
-Der Microsoft-365-Apps-Workflow ist sowohl für Intune- als auch für Nerdio-Manager-Szenarien verfügbar. Überprüfen Sie vor der Verwendung in der Produktion Ihre XML-Konfiguration, die Paketierungsausgabe und die Mandantenberechtigungen.
-:::
-
-Navigieren Sie zu einem Ordner mit XML-Konfigurationsdateien des Office-Bereitstellungstools und klicken Sie auf **Konfigurationen laden**.
-
-![Register „Import“ mit Microsoft-365-Apps-Paketkonfigurationen und Importaktionen](/img/ui/evergreen-workbench-import-m365.png)
-
-Das Gitter zeigt für jede Konfiguration Folgendes an:
-
-- **Dateiname** – Name der XML-Datei
-- **Anzeigename** – generierter Anzeigename der App
-- **Produkte** – analysierte Produkte und Zieldetails
-- **Status** – Ergebnis der Konfigurationsprüfung (z. B. Gültig, Keine ID oder Ungültiges XML)
-
-Verwenden Sie die Aktionsleiste, um Paketierung und Import zu konfigurieren:
-
-- **Kanal** – wählt den für die Paketerstellung verwendeten Microsoft-365-Updatekanal aus
-- **Unternehmensname** – erforderlicher Wert, der in die Paketmetadaten eingefügt wird
-- **Nerdio-Manager-Shell-App importieren** – erstellt das Paket und importiert es in Nerdio Manager
-- **Microsoft-Intune-Win32-App importieren** – erstellt das Paket und importiert es in Intune
-
-Für den Nerdio-Workflow in EvergreenUI 1.0.20 liest Workbench Shell-App-Definitionsdateien aus einem Unterverzeichnis `shell-app` neben den XML-Konfigurationen, überprüft die erforderlichen Dateien (`Definition.json`, `Detect.ps1`, `Install.ps1`, `Uninstall.ps1`) und erstellt anhand dieser Definition die Shell App. Dieser Ablauf benötigt für Nerdio-Importe nicht mehr `IntuneWin32App`.
-
-Verbindungsanzeigen auf diesem Register zeigen den Authentifizierungsstatus für Microsoft Intune und Nerdio Manager an.
-
-### Paketdefinitionen
-
-Paketdefinitionen für Installations- und Importfunktionen finden Sie hier: [https://github.com/EUCPilots/evergreen-packages](https://github.com/EUCPilots/evergreen-packages).
-
-::: info
-Diese Paketdefinitionen sollten vor der Verwendung überprüft werden. Langfristig soll eine einheitliche Paketdefinition für Intune-Win32-Apps und Nerdio-Manager-Shell-Apps erstellt werden.
-:::
-
-### Authentifizierung
-
-Im Unterregister „Authentifizierung“ werden Verbindungen mit Entra ID, der Nerdio-Manager-API und Azure Storage verwaltet. Diese Verbindungen sind für Import-Workflows von Intune, Nerdio Manager und Microsoft 365 Apps erforderlich.
-
-![Unterregister „Authentifizierung“ mit Verbindungen zu Entra ID, Nerdio-Manager-API und Azure Storage](/img/ui/evergreen-workbench-import-auth.png)
-
-Konfigurieren Sie Folgendes:
-
-- **Entra ID** – geben Sie optional eine Mandanten-ID ein und verwenden Sie **Anmelden**, um eine Verbindung mit Microsoft Intune herzustellen
-- **Nerdio-Manager-API** – geben Sie NME-Host, Client-ID, API-Bereich, OAuth-Token-URL, Client-Secret und Mandanten-ID an, um eine Verbindung mit Nerdio Manager herzustellen
-- **Azure Storage für Nerdio-Manager-Shell-Apps** – konfigurieren Sie optional Abonnement-ID, Ressourcengruppe, Speicherkonto und Container zum Speichern von Anwendungspaketen
-
-## Aktualisierungsansicht
-
-Die Aktualisierungsansicht führt `Update-Evergreen` über die grafische Oberfläche aus, um den lokalen Cache der Anwendungsdefinitionen mit dem neuesten Release aus dem Repository [evergreen-apps](https://github.com/EUCPilots/evergreen-apps) zu synchronisieren.
-
-![Aktualisierungsansicht mit der Ausgabe von Update-Evergreen, Hashüberprüfung und Synchronisierungsfortschritt](/img/ui/evergreen-workbench-update.png)
-
-Klicken Sie auf **Update-Evergreen ausführen**, um die Aktualisierung zu starten. Im Ausgabebereich werden mit Zeitstempel versehene Protokollmeldungen zur Cacheprüfung, zum Download, zur Hashüberprüfung und zum Synchronisierungsfortschritt angezeigt.
-
-## Infoansicht
-
-Die Infoansicht zeigt die Metadaten des geladenen EvergreenUI-Moduls, darunter Name, Version, Vorabversionsbezeichnung, Projekt-URI und Beschreibung.
-
-![Infoansicht mit Modulmetadaten und erforderlichen Modulen](/img/ui/evergreen-workbench-about.png)
-
-Außerdem enthält sie den Abschnitt **Erforderliche Module**, in dem die von Import-Workflows verwendeten Modulabhängigkeiten aufgeführt und deren Installationsstatus angezeigt werden.
-
-## Einstellungen
-
-In der Einstellungsansicht werden allgemeine Einstellungen und anbieterspezifische Optionen konfiguriert.
-
-![Einstellungsansicht mit den Konfigurationen für Allgemein, Microsoft Intune und Protokolle](/img/ui/evergreen-workbench-settings.png)
-
-### Allgemein
-
-- **Download-Ausgabepfad** – Standardverzeichnis für heruntergeladene Anwendungsinstaller
-- **Pfad der Evergreen-Apps** – Pfad zum lokalen Cache der Evergreen-Anwendungsdefinitionen (schreibgeschützt; zeigt den Wert aus `Get-EvergreenAppsPath` an)
-- **Design** – zwischen hellem und dunklem Design wechseln
-- **Register „Import“ anzeigen** / **Register „Installieren“ anzeigen** – Sichtbarkeit der Import- und Installationsansichten umschalten
-- **App-Versionscache** – Versionsdaten werden lokal zwischengespeichert und beim Auswählen einer App geladen. Verwenden Sie **Cache leeren**, um bei der nächsten Auswahl eine neue Abfrage zu erzwingen.
-- **Cacheordner öffnen** – den lokalen Cacheordner der App-Versionen öffnen
-
-### Microsoft Intune
-
-- **IntuneWin32App-Modul** – Statusanzeige, ob das IntuneWin32App-Modul geladen ist; verwenden Sie **Neu laden**, um es erneut zu importieren
-- **Paketausgabepfad** – Verzeichnis für Intune-Win32-Paketausgabedateien
-
-### Protokolle
-
-- **Protokollordner öffnen** – das lokale EvergreenUI-Protokollverzeichnis öffnen
-- **Protokolle löschen** – lokale `.log`-Dateien aus dem EvergreenUI-Protokollverzeichnis löschen
-
-## Protokollbereich
-
-Der Protokollbereich unten im Fenster zeigt Meldungen mit Zeitstempel auf drei Ebenen an:
-
-- **Info** – Fortschritts- und Statusmeldungen
-- **Warnung** – nicht kritische Probleme (z. B. eine Weiterleitung als Antwort auf eine Download-URL)
-- **Fehler** – Fehler beim Suchen nach Versionen, Herunterladen oder Aktualisieren von Bibliotheken
-
-![Fortschrittsprotokollbereich mit detaillierter Vorgangsausgabe](/img/ui/evergreen-workbench-progresslog.png)
-
-Verwenden Sie **Protokoll kopieren**, **Protokoll speichern**, **Fortschrittsprotokoll anzeigen** oder **Fortschrittsprotokoll ausblenden**, um die Protokollausgabe zu verwalten. Während Vorgänge ausgeführt werden, entstehen Protokollmeldungen in Echtzeit in Hintergrund-Runspaces.
+Alle Workbench-Funktionen sind als PowerShell-Befehle verfügbar, darunter Hintergrundjobs, Definitionen, Veröffentlichung und Cachewartung. Siehe die [Befehlsreferenz für Windows Workbench](/de-de/workbench-commands).

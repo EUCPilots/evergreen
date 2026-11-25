@@ -452,8 +452,13 @@ export default defineConfig({
         items: [
           { text: 'About the Workbench', link: '/workbench' },
           { text: 'Using the Web Workbench', link: '/workbench-web' },
-          { text: 'Installing the Desktop Workbench', link: '/workbench-install' },
-          { text: 'Using the Desktop Workbench', link: '/workbench-desktop' }
+          { text: 'Installing the Windows Workbench', link: '/workbench-install' },
+          { text: 'Using the Windows Workbench', link: '/workbench-desktop' },
+          { text: 'Packages and local install', link: '/workbench-packages' },
+          { text: 'Publishing to Intune', link: '/workbench-intune' },
+          { text: 'Publishing to Nerdio', link: '/workbench-nerdio' },
+          { text: 'Microsoft 365 Apps packages', link: '/workbench-m365' },
+          { text: 'Command reference', link: '/workbench-commands' }
         ]
       },
       {

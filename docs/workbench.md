@@ -3,50 +3,60 @@ layout: doc
 ---
 # About the Evergreen Workbench
 
-The Evergreen Workbench is a graphical interface for exploring application version data from the [Evergreen](/about) PowerShell module. It is available in two editions - a **Desktop Workbench** for Windows, and a **Web Workbench** that runs in any modern browser.
+The Evergreen Workbench is a graphical interface for exploring application version data from the [Evergreen](/about) PowerShell module. It is available in two editions - a **Windows Workbench**, and a **Web Workbench** that runs in any modern browser.
 
 ::: info
-This page reflects EvergreenUI features and functions starting with version **1.0.21**.
+This page reflects EvergreenUI features and functions starting with version **2.0.1-preview**.
 :::
 
-## Desktop vs Web
+## Windows vs Web
 
-| | Desktop Workbench | Web Workbench |
+| | Windows Workbench | Web Workbench |
 |---|---|---|
-| **Platform** | Windows (WPF) | Any modern browser |
+| **Platform** | Windows (WPF, PowerShell 7.6+) | Any modern browser |
 | **Install** | PowerShell module ([EvergreenUI](https://www.powershellgallery.com/packages/EvergreenUI/)) | No install - hosted at [eucpilots.com/workbench](https://eucpilots.com/workbench) |
 | **Browse apps** | Yes | Yes |
 | **Search and filter** | Yes | Yes |
 | **Dashboard** | - | Yes |
 | **Download installers** | Yes | - |
 | **Library management** | Yes | - |
-| **Install / update apps** | Yes (pre-release) | - |
-| **Import to Intune / Nerdio / Microsoft 365 Apps** | Yes (pre-release) | - |
+| **Definitions and local install** | Yes (pre-release) | - |
+| **Publish to Intune / Nerdio Manager** | Yes (pre-release) | - |
+| **Microsoft 365 Apps packages** | Yes (pre-release) | - |
+| **Scriptable commands** | Yes (`Ew` commands) | - |
 | **Export to CSV** | Yes | Yes |
 | **RSS feeds** | - | Yes (per app) |
 | **PWA install** | - | Yes |
 | **Theme** | Light / Dark | Light / Dark |
 
-## Desktop Workbench
+## Windows Workbench
 
 ::: warning Beta
-The Desktop Workbench (EvergreenUI) is currently in pre-release. Features and commands may change before the stable release.
+The Windows Workbench (EvergreenUI) is currently in pre-release. Features and commands may change before the stable release.
 :::
 
-The Desktop Workbench is a WPF-based graphical frontend shipped as the `EvergreenUI` PowerShell module. It wraps the same cmdlets you already use (`Get-EvergreenApp`, `Save-EvergreenApp`, `Start-EvergreenLibraryUpdate`, etc.) behind an interactive Windows desktop interface.
-
-![The Desktop Workbench Apps view](/img/ui/evergreen-workbench-apps.png)
+The Windows Workbench is a WPF-based graphical frontend shipped as the `EvergreenUI` PowerShell module. It wraps the same cmdlets you already use (`Get-EvergreenApp`, `Save-EvergreenApp`, `Update-EvergreenLibrary`, etc.) behind an interactive Windows desktop interface.
 
 Key capabilities:
 
-- **Browse and filter** all Evergreen-supported applications with dynamic filter panels
-- **Download** application installers via a queued download manager
-- **Manage libraries** - create, browse, and update Evergreen libraries on disk
-- **Install and update** applications directly from package definitions *(pre-release workflow)*
-- **Import** application packages into Microsoft Intune (Win32 apps), Nerdio Manager (Shell Apps), and Microsoft 365 Apps workflows *(pre-release workflows)*
-- **Settings** for download paths, themes, log verbosity, and provider configuration
+- **Apps** - browse and filter every Evergreen application, choose visible columns, export to CSV, and queue downloads across applications
+- **Library** - read, update and selectively remove applications or versions in a local Evergreen library
+- **Packages** - load and update `App.json` definitions and test local installation with architecture safeguards
+- **Intune** - compare definitions with Win32 apps, then build and publish them with supersedence
+- **Nerdio** - compare Shell Apps, publish apps and versions, and prune old versions
+- **Microsoft 365 Apps** - build and publish Office packages to Intune or Nerdio Manager
+- **Headless commands** - the same functionality as scriptable `Ew` commands and background jobs
+- **Settings and About** - saved folders, theme, and dependency status
 
-See [Installing the Desktop Workbench](/workbench-install) and [Using the Desktop Workbench](/workbench-desktop) for full details.
+Learn more:
+
+- [Installing the Windows Workbench](/workbench-install)
+- [Using the Windows Workbench](/workbench-desktop)
+- [Packages, definitions and local install](/workbench-packages)
+- [Publishing to Microsoft Intune](/workbench-intune)
+- [Publishing to Nerdio Manager](/workbench-nerdio)
+- [Microsoft 365 Apps packages](/workbench-m365)
+- [Windows Workbench command reference](/workbench-commands)
 
 ## Web Workbench
 

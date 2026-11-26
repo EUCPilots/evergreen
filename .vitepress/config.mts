@@ -1,4 +1,14 @@
 import { defineConfig, type DefaultTheme } from 'vitepress'
+import { mkdir, stat, writeFile } from 'node:fs/promises'
+import path from 'node:path'
+
+const helpPagePattern = /^help\/([a-z]{2}-[a-z]{2})\/([\w-]+)\.md$/i
+
+function lowercaseHelpLocale(page: string) {
+  return page.replace(helpPagePattern, (_, locale: string, name: string) =>
+    `help/${locale.toLowerCase()}/${name}.md`
+  )
+}
 
 const docsSections: { key: string; pages: [string, string][] }[] = [
   {
@@ -360,6 +370,33 @@ export default defineConfig({
     hostname: 'https://eucpilots.github.io/evergreen/'
   },
   cleanUrls: true,
+  rewrites: lowercaseHelpLocale,
+  async buildEnd({ pages, outDir, site }) {
+    for (const page of pages) {
+      const match = page.match(helpPagePattern)
+      if (!match) continue
+
+      const locale = match[1].toLowerCase()
+      const legacyLocale = `${locale.slice(0, 3)}${locale.slice(3).toUpperCase()}`
+      const name = match[2]
+      const target = `${site.base}help/${locale}/${name}.html`
+      const redirect = `<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=${target}"><script>location.replace(${JSON.stringify(target)} + location.search + location.hash)</script></head><body><a href="${target}">Continue</a></body></html>`
+      const canonicalDir = path.join(outDir, 'help', locale)
+      const legacyDir = path.join(outDir, 'help', legacyLocale)
+
+      await mkdir(path.join(canonicalDir, name), { recursive: true })
+      await writeFile(path.join(canonicalDir, name, 'index.html'), redirect)
+      await mkdir(legacyDir, { recursive: true })
+
+      const canonicalStat = await stat(canonicalDir)
+      const legacyStat = await stat(legacyDir)
+      if (canonicalStat.dev !== legacyStat.dev || canonicalStat.ino !== legacyStat.ino) {
+        await writeFile(path.join(legacyDir, `${name}.html`), redirect)
+        await mkdir(path.join(legacyDir, name), { recursive: true })
+        await writeFile(path.join(legacyDir, name, 'index.html'), redirect)
+      }
+    }
+  },
   // ignoreDeadLinks: true,
 
   locales: {

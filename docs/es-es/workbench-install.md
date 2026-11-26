@@ -17,6 +17,7 @@ Esta página describe las características y funciones de EvergreenUI a partir d
 |---|---|
 | Sistema operativo | Windows 10 / Windows Server 2019 o posterior |
 | PowerShell | 7.6 o posterior (solo PowerShell Core) |
+| Fuente | Windows 10, 2019 y 2022 requieren la [fuente Segoe Fluent Icons para Windows 11](https://www.microsoft.com/en-us/download/details.aspx?id=108863) |
 | Módulo Evergreen | 2603.2832.0 o posterior |
 
 ::: info

@@ -17,6 +17,7 @@ Windows Workbench (EvergreenUI) は現在プレリリースです。`-AllowPrere
 |---|---|
 | オペレーティング システム | Windows 10 / Windows Server 2019 以降 |
 | PowerShell | 7.6 以降（PowerShell Core のみ） |
+| フォント | Windows 10、2019、2022 では [Windows 11 用 Segoe Fluent Icons フォント](https://www.microsoft.com/en-us/download/details.aspx?id=108863) が必要です |
 | Evergreen モジュール | 2603.2832.0 以降 |
 
 ::: info

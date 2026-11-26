@@ -17,6 +17,7 @@ This page reflects EvergreenUI features and functions starting with version **2.
 |---|---|
 | Operating system | Windows 10 / Windows Server 2019 or later |
 | PowerShell | 7.6 or later (PowerShell Core only) |
+| Font | Windows 10, 2019, 2022 requires the [Segoe Fluent Icons font for Windows 11](https://www.microsoft.com/en-us/download/details.aspx?id=108863) |
 | Evergreen module | 2603.2832.0 or later |
 
 ::: info

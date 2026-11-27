@@ -8,7 +8,7 @@ The Windows Workbench (EvergreenUI) is currently in pre-release. Install with th
 :::
 
 ::: info
-This page reflects EvergreenUI features and functions starting with version **2.0.1-preview**.
+This page reflects EvergreenUI features and functions starting with version **2.0.5-preview**.
 :::
 
 ## Requirements

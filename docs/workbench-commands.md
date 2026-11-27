@@ -79,7 +79,10 @@ Commands that change data support `-WhatIf` and `-Confirm` where noted in their 
 | `Get-EwNerdioPublishPlan` / `Publish-EwNerdioBatch` | Plan and publish confirmed selections sequentially |
 | `Publish-EwNerdioApp` | Publish a Shell App or add a version (`-ShellAppId`) |
 | `Get-EwNerdioShellAppVersionPrunePlan` / `Remove-EwNerdioShellAppVersion` | Preview and remove old versions |
+| `Get-EwNerdioRecovery` / `Clear-EwNerdioRecovery` | List unresolved operations or acknowledge one without verifying its outcome |
 | `Get-EwM365NerdioPublishPlan` / `Publish-EwM365NerdioApp` | Preview and publish a Microsoft 365 package to Nerdio |
+
+`Clear-EwNerdioRecovery -OperationId <id>` supports `-WhatIf` and warns that retrying an unresolved operation may duplicate or conflict with a provider operation that is still running. It does not verify, retry or cancel that operation.
 
 Nerdio sessions are shared in memory across the module's job workers. Expiry, disconnect and provider configuration changes require reconnection. Tokens and secrets are never saved.
 

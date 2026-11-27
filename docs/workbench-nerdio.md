@@ -11,7 +11,7 @@ The **Nerdio** view connects to Azure and the Nerdio Manager API, compares Shell
 
 ## Settings tab - connections
 
-Connect in two stages.
+Connect Azure and the Nerdio API independently, in either order.
 
 **Azure storage setup**
 
@@ -22,9 +22,9 @@ Connect in two stages.
 
 Enter the **Nerdio HTTPS host**, **Application client ID**, **API scope**, an optional **OAuth token URL** and the **Client secret (not saved)**, then choose **Connect Nerdio API**.
 
-Use **Save setup** to persist the non-secret values. The client secret is cleared from the form on connect and is never saved. Choose **Disconnect Azure and Nerdio** to end both sessions; this does not change an unrelated Azure context.
+Use **Save setup** to persist the non-secret values. The client secret is cleared from the form on connect and is never saved. Choose **Disconnect Azure and Nerdio** to end both sessions; this does not change an unrelated Azure context. If a cached Azure context has expired or its credentials are unavailable, the Workbench prompts you to sign in again.
 
-**API only (Microsoft 365 build only)** authenticates to Nerdio without Azure storage. A full connection with Azure storage is required for any Nerdio publishing.
+**API only (Microsoft 365 build only)** authenticates to Nerdio without Azure storage. Shell Apps comparison and publishing require both connections and a selected Azure storage destination. Microsoft 365 publishing also requires Azure storage.
 
 Required modules are `Az.Accounts`, `Az.Resources` and `Az.Storage`; they load only when needed.
 
@@ -42,7 +42,7 @@ The resolved installer is uploaded directly to blob storage. Local definitions a
 
 ### Publishing
 
-**Publish selected** shows one confirmation with versions, operations and the Azure and Nerdio destination. Files, sources and matches are rechecked before any write. **Cancel batch** takes effect between items; the current provider operation finishes first. Results keep known blob, app and job IDs.
+**Publish selected** shows one confirmation with versions, operations and the Azure and Nerdio destination. Files, sources and matches are rechecked before any write. **Cancel batch** takes effect between items; the current provider operation finishes first. Results keep known blob, app and job IDs. When a publish request fails validation, the Workbench shows safe validation details; uncertain writes are not retried automatically.
 
 ### Recovery
 
@@ -54,7 +54,7 @@ Select an unresolved result and choose **Review outcome**:
 - **No** - only after confirming that it failed
 - **Cancel** - leave it unresolved
 
-A claimed success is not accepted until the Workbench refreshes the Shell App and verifies that the published version is uniquely newest. Nothing is retried, rolled back or removed automatically.
+If the outcome remains unknown after inspection, use **Acknowledge unknown outcome** only after reviewing the operation. Acknowledgment removes its recovery record but does not verify or cancel the provider operation; a retry may duplicate or conflict with an operation still running. A local operation that is still active cannot be acknowledged. A claimed success is not accepted until the Workbench refreshes the Shell App and verifies that the published version is uniquely newest. Nothing is retried, rolled back or removed automatically.
 
 ### Pruning old versions
 
@@ -67,3 +67,5 @@ To prune without publishing, select one matched Shell App and choose **Prune sel
 `Connect-EwAzure`, `Connect-EwNerdio`, `Get-EwAzureResourceGroup`, `Get-EwAzureStorageAccount`, `Get-EwAzureStorageContainer`, `Get-EwNerdioDefinition`, `Get-EwNerdioShellApp`, `Get-EwNerdioShellAppVersion`, `Compare-EwNerdioShellApp`, `Get-EwNerdioPublishPlan`, `Publish-EwNerdioApp`, `Publish-EwNerdioBatch`, `Get-EwNerdioShellAppVersionPrunePlan` and `Remove-EwNerdioShellAppVersion`. See the [command reference](/workbench-commands).
 
 `Publish-EwNerdioApp -ShellAppId` adds a version to an existing Shell App and downloads from the definition source if `-PackagePath` is omitted. `Remove-EwNerdioShellAppVersion` accepts `-ExpectedVersionNames` and `-ExpectedRemovalVersions` to reject a stale preview.
+
+Use `Get-EwNerdioRecovery` to list unresolved operations for the connected destination. `Clear-EwNerdioRecovery -OperationId <id>` acknowledges one without verifying, retrying or cancelling it; it supports `-WhatIf` and warns that retrying may duplicate or conflict with an operation still in progress.

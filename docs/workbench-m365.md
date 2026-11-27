@@ -43,6 +43,8 @@ Publishing confirms before building.
 - **Intune** creates a new app, shows existing matches by configuration ID, and can optionally supersede one (an update relationship, without uninstalling it) using **Optional app to supersede**.
 - **Nerdio** can create a Shell App or add a version to the **Existing Shell App for add version**. Adding a version that already exists requires ticking *I confirm the configuration changed if this Office version already exists*; Nerdio cannot compare the remote configuration and may still reject it.
 
+If Nerdio completes creation of a Microsoft 365 Shell App but omits its ID from the response, the Workbench attempts to resolve the new app. If the result is ambiguous, the operation remains blocked for review rather than being treated as a confirmed success.
+
 Inputs and provider targets are rechecked before writes, but not atomically. Existing packages are replaced only with explicit approval. Builds keep the staged source and tool under `<application>\Builds\<GUID>` in the output folder; remove these manually when no longer needed. Cancellation takes effect between stages and does not interrupt an active build, upload or request.
 
 ## Recovery

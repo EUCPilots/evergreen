@@ -8,7 +8,7 @@ The Windows Workbench (EvergreenUI) is currently in pre-release. Features and co
 :::
 
 ::: info
-This page reflects EvergreenUI features and functions starting with version **2.0.1-preview**.
+This page reflects EvergreenUI features and functions starting with version **2.0.5-preview**.
 :::
 
 ## Launching the Workbench
@@ -147,6 +147,17 @@ The Settings view shows the folders saved for each workflow and the appearance o
 | **Nerdio Manager Shell Apps directory** | Nerdio Shell Apps |
 
 Use **Browse** to save a folder, or use the controls in each workflow. Changing one of the three workflow folders in Settings replaces any unsaved folder edit in that workflow. **Open folder** is available only when the folder can be reached.
+
+**Maintenance**
+
+- **Update Evergreen** refreshes Evergreen application data; it does not upgrade the installed PowerShell module.
+- **Clear Workbench cache** asks for confirmation before clearing cached catalog and version data.
+- **Open cache folder** opens the Workbench cache location.
+
+**Window layout and defaults**
+
+- **Reset window layout** restores the saved window size and panel layout to their defaults.
+- **Restore Workbench defaults** asks for confirmation before restoring settings and UI preferences. It does not delete downloads, Library contents or provider recovery records.
 
 **Appearance**
 

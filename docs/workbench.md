@@ -6,7 +6,7 @@ layout: doc
 The Evergreen Workbench is a graphical interface for exploring application version data from the [Evergreen](/about) PowerShell module. It is available in two editions - a **Windows Workbench**, and a **Web Workbench** that runs in any modern browser.
 
 ::: info
-This page reflects EvergreenUI features and functions starting with version **2.0.1-preview**.
+This page reflects EvergreenUI features and functions starting with version **2.0.5-preview**.
 :::
 
 ## Windows vs Web
@@ -46,7 +46,7 @@ Key capabilities:
 - **Nerdio** - compare Shell Apps, publish apps and versions, and prune old versions
 - **Microsoft 365 Apps** - build and publish Office packages to Intune or Nerdio Manager
 - **Headless commands** - the same functionality as scriptable `Ew` commands and background jobs
-- **Settings and About** - saved folders, theme, and dependency status
+- **Settings and About** - saved folders, theme, maintenance and reset controls, and dependency status
 
 Learn more:
 
